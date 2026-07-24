@@ -165,6 +165,13 @@
   .skill-card .cat{ font-family:'JetBrains Mono'; color: var(--accent); font-size: 12px; margin-bottom: 8px; }
   .skill-card .items{ color: var(--text); font-size: 14px; }
 
+    /* qa section */
+  #qa{ border-top: 1px solid var(--line); }
+  #qa .eyebrow{ color: var(--amber); }
+  .project.qa{ border-color: #3A331E; }
+  .project.qa .tag{ color: var(--amber); border-color: #5C4A1F; background: rgba(245,185,66,0.08); }
+  .project.qa .project-links a::before{ color: var(--amber); }
+
   /* footer */
   footer{ padding: 48px 0 60px; }
   .footer-links{ display:flex; gap: 22px; flex-wrap: wrap; font-family:'JetBrains Mono'; font-size: 13.5px; }
@@ -183,6 +190,7 @@
     <div class="nav-links">
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
+      <a href="#qa">QA Testing</a>
       <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
     </div>
@@ -298,6 +306,42 @@
   </div>
 </section>
 
+<section id="qa">
+  <div class="wrap">
+    <p class="eyebrow"></p>
+    <h2>QA Testing Portfolio</h2>
+    <p class="lead" style="margin-bottom:28px;">Selain data analysis, saya juga terbuka untuk peran QA Analyst — berikut studi kasus manual &amp; automation testing.</p>
+
+    <div class="project qa">
+      <div class="project-head">
+        <h3> Automation testing of the Linggarjati Web-based Application using Katalon Studio</h3>
+        <span class="project-id">qa_01</span>
+      </div>
+      <p>Proyek ini berfokus pada otomatisasi pengujian fungsional untuk aplikasi berbasis web Linggarjati menggunakan Katalon Studio. Sebuah rangkaian pengujian komprehensif yang terdiri dari 45 kasus pengujian otomatis telah dikembangkan, yang menargetkan area fungsional utama dari aplikasi tersebut. Tujuan utamanya adalah untuk memastikan fungsionalitas yang andal pada seluruh fitur inti aplikasi.</p>
+      <div class="tags">
+        <span class="tag">Automation Testing</span><span class="tag">Katalon Studio</span><span class="tag">Test Case Design</span><span class="tag">Bug Reporting</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/ririfka08/automation-testing-linggarjati" target="_blank" rel="noopener">GitHub Repo</a>
+      </div>
+    </div>
+
+    <div class="project qa">
+      <div class="project-head">
+        <h3> Automation testing of the Linggarjati Web-based Application using Katalon Studio</h3>
+        <span class="project-id">qa_02</span>
+      </div>
+      <p>Proyek ini berfokus pada pengujian manual terhadap aplikasi berbasis web Linggarjati dengan menggunakan metode pengujian Black Box. Serangkaian pengujian yang komprehensif yang terdiri dari 45 kasus uji telah dikembangkan, yang terutama menargetkan aspek-aspek fungsional aplikasi tersebut.</p>
+      <div class="tags">
+        <span class="tag">Manual Testing</span><span class="tag">Test Case</span><span class="tag">Test Case Design</span><span class="tag">Bug Reporting</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/ririfka08/manual-testing-linggarjati" target="_blank" rel="noopener">GitHub Repo</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="skills">
   <div class="wrap">
     <h2>Technical Skills</h2>
@@ -317,6 +361,10 @@
       <div class="skill-card">
         <div class="cat">tools</div>
         <div class="items">Git, GitHub, Google Colab</div>
+      </div>
+            <div class="skill-card">
+        <div class="cat">qa testing</div>
+        <div class="items">Katalon Studio, Manual Testing, Test Case Design</div>
       </div>
     </div>
   </div>
