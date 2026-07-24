@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rifka — Data Analyst Portfolio</title>
+<meta name="description" content="Data Analyst portfolio — Python, SQL, Data Visualization">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0B1120;
+    --surface: #121A2E;
+    --surface-2: #182642;
+    --line: #253352;
+    --text: #E7ECF5;
+    --muted: #8CA0C2;
+    --accent: #2FE0BE;
+    --accent-dim: #1B7F6E;
+    --amber: #F5B942;
+    --radius: 10px;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background:
+      radial-gradient(1200px 600px at 80% -10%, rgba(47,224,190,0.08), transparent 60%),
+      var(--bg);
+    color: var(--text);
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.6;
+  }
+
+  .mono{ font-family: 'JetBrains Mono', monospace; }
+
+  a{ color: var(--accent); text-decoration: none; }
+  a:hover{ text-decoration: underline; }
+  a:focus-visible, button:focus-visible{
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  .wrap{ max-width: 880px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position: sticky; top:0; z-index: 10;
+    background: rgba(11,17,32,0.85);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top: 14px; padding-bottom: 14px;
+  }
+  .brand{ font-family:'JetBrains Mono'; font-weight:700; color: var(--text); font-size: 15px; }
+  .brand span{ color: var(--accent); }
+  .nav-links{ display:flex; gap: 22px; font-size: 14px; }
+  .nav-links a{ color: var(--muted); }
+  .nav-links a:hover{ color: var(--text); text-decoration: none; }
+
+  /* ---------- HERO ---------- */
+  header.hero{ padding: 72px 0 56px; }
+  .query-box{
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 20px 60px -30px rgba(0,0,0,0.6);
+  }
+  .query-titlebar{
+    display:flex; align-items:center; gap:8px;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--line);
+    background: var(--surface-2);
+  }
+  .dot{ width:10px; height:10px; border-radius:50%; }
+  .dot.r{ background:#ef5a5a; } .dot.y{ background:#f2c14e; } .dot.g{ background:#2fe0be; }
+  .query-titlebar span.file{ margin-left: 8px; font-size: 12px; color: var(--muted); font-family:'JetBrains Mono'; }
+
+  .query-body{ padding: 26px 22px; font-family:'JetBrains Mono'; font-size: 14px; }
+  .kw{ color: var(--accent); }
+  .str{ color: var(--amber); }
+  .cmt{ color: var(--muted); }
+
+  #typed-line{ white-space: pre-wrap; word-break: break-word; }
+  .cursor{
+    display:inline-block; width: 8px; height: 16px; background: var(--accent);
+    margin-left: 2px; vertical-align: -2px;
+    animation: blink 1s step-end infinite;
+  }
+  @keyframes blink{ 50%{ opacity: 0; } }
+
+  table.result{ width:100%; border-collapse: collapse; margin-top: 18px; font-size: 13px; }
+  table.result th, table.result td{
+    text-align:left; padding: 9px 12px; border-bottom: 1px solid var(--line);
+  }
+  table.result th{ color: var(--muted); font-weight:500; }
+  table.result td{ color: var(--text); }
+  .badge{
+    display:inline-block; padding: 2px 8px; border-radius: 999px;
+    background: rgba(47,224,190,0.12); color: var(--accent);
+    font-size: 12px; border: 1px solid var(--accent-dim);
+  }
+
+  .hero-cta{ display:flex; gap:14px; margin-top: 26px; flex-wrap: wrap; }
+  .btn{
+    font-family:'JetBrains Mono'; font-size: 13px; padding: 10px 16px;
+    border-radius: 8px; border: 1px solid var(--line);
+  }
+  .btn.primary{ background: var(--accent); color: #04231d; border-color: var(--accent); font-weight:700; }
+  .btn.primary:hover{ text-decoration:none; filter: brightness(1.08); }
+  .btn.ghost{ color: var(--text); }
+  .btn.ghost:hover{ border-color: var(--accent); text-decoration:none; }
+
+  /* ---------- SECTIONS ---------- */
+  section{ padding: 56px 0; border-top: 1px solid var(--line); }
+  .eyebrow{
+    font-family:'JetBrains Mono'; font-size: 12px; color: var(--accent);
+    letter-spacing: 0.06em; margin: 0 0 10px;
+  }
+  h2{ font-size: 22px; margin: 0 0 18px; }
+  p.lead{ color: var(--muted); max-width: 640px; }
+
+  /* about */
+  .about-grid{ display:grid; grid-template-columns: 1.3fr 1fr; gap: 32px; }
+  @media (max-width: 720px){ .about-grid{ grid-template-columns: 1fr; } }
+  .schema{
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 16px 18px; font-family:'JetBrains Mono'; font-size: 13px;
+  }
+  .schema .row{ display:flex; justify-content:space-between; padding: 7px 0; border-bottom: 1px dashed var(--line); }
+  .schema .row:last-child{ border-bottom:none; }
+  .schema .k{ color: var(--muted); }
+  .schema .v{ color: var(--text); }
+
+  /* projects */
+  .project{
+    background: var(--surface); border:1px solid var(--line); border-radius: var(--radius);
+    padding: 22px; margin-bottom: 18px;
+  }
+  .project-head{ display:flex; align-items:baseline; justify-content:space-between; gap: 12px; flex-wrap:wrap; }
+  .project-id{ font-family:'JetBrains Mono'; font-size: 12px; color: var(--muted); }
+  .project h3{ margin: 4px 0 8px; font-size: 18px; }
+  .project p{ color: var(--muted); margin: 0 0 14px; font-size: 14.5px; }
+  .tags{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom: 14px; }
+  .tag{
+    font-family:'JetBrains Mono'; font-size: 11.5px; padding: 3px 9px; border-radius: 6px;
+    background: var(--surface-2); color: var(--muted); border: 1px solid var(--line);
+  }
+  .project-links{ display:flex; gap: 16px; font-size: 13.5px; font-family:'JetBrains Mono'; }
+  .project-links a::before{ content: "→ "; color: var(--accent); }
+
+  /* skills */
+  .skills-grid{ display:grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  @media (max-width: 620px){ .skills-grid{ grid-template-columns: 1fr; } }
+  .skill-card{
+    background: var(--surface); border:1px solid var(--line); border-radius: var(--radius);
+    padding: 16px 18px;
+  }
+  .skill-card .cat{ font-family:'JetBrains Mono'; color: var(--accent); font-size: 12px; margin-bottom: 8px; }
+  .skill-card .items{ color: var(--text); font-size: 14px; }
+
+  /* footer */
+  footer{ padding: 48px 0 60px; }
+  .footer-links{ display:flex; gap: 22px; flex-wrap: wrap; font-family:'JetBrains Mono'; font-size: 13.5px; }
+  .footer-note{ color: var(--muted); font-size: 13px; margin-top: 22px; }
+
+  @media (prefers-reduced-motion: reduce){
+    .cursor{ animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">rifka<span>.sql</span></div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="query-box">
+      <div class="query-titlebar">
+        <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+        <span class="file">portfolio.sql — query executed in 12ms</span>
+      </div>
+      <div class="query-body">
+        <div id="typed-line"></div>
+        <table class="result" id="result-table" style="display:none;">
+          <thead>
+            <tr><th>full_name</th><th>role</th><th>focus</th><th>status</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Rifka</td>
+              <td>Data Analyst</td>
+              <td>Python · SQL · Visualization</td>
+              <td><span class="badge">open_to_work</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="hero-cta">
+      <a class="btn primary" href="#projects">Lihat Projects</a>
+      <a class="btn ghost" href="#contact">Hubungi Saya</a>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <p class="eyebrow">// about</p>
+    <div class="about-grid">
+      <div>
+        <h2>Tentang Saya</h2>
+        <p class="lead">
+          Lulusan IT dengan fokus pada Data Analysis. Saya membangun setiap
+          project berdasarkan pertanyaan bisnis konkret — bukan sekadar
+          eksplorasi data — dan menerjemahkannya menjadi dashboard interaktif
+          maupun query SQL yang menjawab kebutuhan pengambilan keputusan.
+        </p>
+        <p class="lead">
+          Terbuka untuk peran Data Analyst, QA Analyst, maupun System Analyst.
+        </p>
+      </div>
+      <div class="schema">
+        <div class="row"><span class="k">education</span><span class="v">IT / Computer Science</span></div>
+        <div class="row"><span class="k">status</span><span class="v">Fresh Graduate</span></div>
+        <div class="row"><span class="k">focus_role</span><span class="v">Data Analyst</span></div>
+        <div class="row"><span class="k">open_to</span><span class="v">QA · System Analyst</span></div>
+        <div class="row"><span class="k">location</span><span class="v">Indonesia</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <p class="eyebrow">// projects</p>
+    <h2>Portfolio Analysis</h2>
+    <p class="lead" style="margin-bottom:28px;">Tiga studi kasus dengan pendekatan business-first — masing-masing menunjukkan skill berbeda.</p>
+
+    <div class="project">
+      <div class="project-head">
+        <h3>📚 Book Publishing Strategy Analysis</h3>
+        <span class="project-id">dataset_01</span>
+      </div>
+      <p>Analisis 52.000+ data buku dari Goodreads untuk merekomendasikan strategi genre dan katalog bagi penerbit — genre populer, pengaruh panjang halaman, tren rating, dan peluang bahasa yang underserved.</p>
+      <div class="tags">
+        <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Plotly</span><span class="tag">Streamlit</span>
+      </div>
+      <div class="project-links">
+        <a href="https://books-analysis-dashboard-rifka.streamlit.app/" target="_blank" rel="noopener">Live Dashboard</a>
+        <a href="https://github.com/ririfka08/books-analysis-dashboard" target="_blank" rel="noopener">GitHub Repo</a>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-head">
+        <h3>🎬 Netflix Content Strategy Analysis</h3>
+        <span class="project-id">dataset_02</span>
+      </div>
+      <p>Analisis multi-tabel (join dataset titles &amp; credits) untuk strategi konten platform streaming — genre underserved, perbandingan Movie vs TV Show, efisiensi negara produksi, hingga analisis level cast.</p>
+      <div class="tags">
+        <span class="tag">Python</span><span class="tag">Table Joins</span><span class="tag">Plotly</span><span class="tag">Streamlit</span>
+      </div>
+      <div class="project-links">
+        <a href="https://netflix-analysis-dashboard-rifka.streamlit.app/" target="_blank" rel="noopener">Live Dashboard</a>
+        <a href="https://github.com/ririfka08/netflix-analysis-dashboard" target="_blank" rel="noopener">GitHub Repo</a>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-head">
+        <h3>🛒 E-Commerce SQL Analysis</h3>
+        <span class="project-id">dataset_03</span>
+      </div>
+      <p>Analisis data transaksional e-commerce menggunakan SQL murni — JOIN multi-tabel, window functions (RANK, LAG), CTE, dan segmentasi customer berdasarkan total spending.</p>
+      <div class="tags">
+        <span class="tag">SQL</span><span class="tag">Window Functions</span><span class="tag">CTE</span><span class="tag">SQLite</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/ririfka08/ecommerce-sql-analysis" target="_blank" rel="noopener">GitHub Repo</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <p class="eyebrow">// skills</p>
+    <h2>Technical Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="cat">programming</div>
+        <div class="items">Python (Pandas, NumPy)</div>
+      </div>
+      <div class="skill-card">
+        <div class="cat">database</div>
+        <div class="items">SQL — Joins, Window Functions, CTE</div>
+      </div>
+      <div class="skill-card">
+        <div class="cat">visualization</div>
+        <div class="items">Plotly, Streamlit</div>
+      </div>
+      <div class="skill-card">
+        <div class="cat">tools</div>
+        <div class="items">Git, GitHub, Google Colab</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <p class="eyebrow">// contact</p>
+    <h2>Mari Terhubung</h2>
+    <div class="footer-links">
+      <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/ririfka08" target="_blank" rel="noopener">GitHub</a>
+      <a href="mailto:rifkaumdati08@gmail.com">Email</a>
+    </div>
+    <p class="footer-note">© 2026 Rifka. Built with HTML, CSS &amp; SQL.</p>
+  </div>
+</footer>
+
+<script>
+  const line = "SELECT full_name, role, focus, status\nFROM   analysts\nWHERE  looking_for = 'opportunity';";
+  const el = document.getElementById('typed-line');
+  const table = document.getElementById('result-table');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function renderStatic(){
+    el.innerHTML =
+      '<span class="kw">SELECT</span> full_name, role, focus, status\n' +
+      '<span class="kw">FROM</span>   analysts\n' +
+      '<span class="kw">WHERE</span>  looking_for = <span class="str">\'opportunity\'</span>;';
+    table.style.display = 'table';
+  }
+
+  if(reduceMotion){
+    renderStatic();
+  } else {
+    let i = 0;
+    el.innerHTML = '<span class="cursor"></span>';
+    const typer = setInterval(() => {
+      i++;
+      const shown = line.slice(0, i)
+        .replace(/SELECT/g, '<span class="kw">SELECT</span>')
+        .replace(/FROM/g, '<span class="kw">FROM</span>')
+        .replace(/WHERE/g, '<span class="kw">WHERE</span>')
+        .replace(/'opportunity'/g, '<span class="str">\'opportunity\'</span>');
+      el.innerHTML = shown + '<span class="cursor"></span>';
+      if(i >= line.length){
+        clearInterval(typer);
+        setTimeout(() => { table.style.display = 'table'; }, 300);
+      }
+    }, 18);
+  }
+</script>
+
+</body>
+</html>
