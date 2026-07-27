@@ -22,6 +22,10 @@
     --lavender: #B48CFA;
     --mint: #7FE7D4;
     --sky: #7FCBFF;
+    --amber: #FFD873;
+    --leaf: #8FD48A;
+    --coral: #FFB199;
+    --rose: #FF8FA3;
     --radius: 6px;
   }
 
@@ -115,11 +119,11 @@
   .schema .k{ color: var(--text); }
   .schema .v{ color: var(--text); font-weight: 600; }
 
-  /* projects */
+  /* projects (data) */
   .project{
     background: var(--surface); border:3px solid var(--text); border-radius: var(--radius);
     padding: 22px; margin-bottom: 18px;
-    box-shadow: 5px 5px 0px 0px var(--lavender);
+    box-shadow: 5px 5px 0px 0px var(--accent);
   }
   .project-head{ display:flex; align-items:baseline; justify-content:space-between; gap: 12px; flex-wrap:wrap; }
   .project-id{ font-family:'JetBrains Mono'; font-size: 11px; color: var(--muted); }
@@ -143,30 +147,30 @@
   .skill-card .cat{ font-family:'Silkscreen'; color: var(--accent-dim); font-size: 11px; margin-bottom: 8px; }
   .skill-card .items{ color: var(--text); font-size: 14px; font-weight: 600; }
 
-  /* qa section */
+  /* qa section (blue — only section using blue) */
   #qa{ border-top: 3px dashed var(--line); }
   #qa .eyebrow{ color: var(--sky); }
   .project.qa{ box-shadow: 5px 5px 0px 0px var(--sky); }
   .project.qa .tag{ color: #0B6E96; border-color: #BFE7FF; background: #EAF8FF; }
   .project.qa .project-links a::before{ color: var(--sky); }
 
-  /* system analyst section */
+  /* system analyst section (coral) */
   #sysan{ border-top: 3px dashed var(--line); }
-  #sysan .eyebrow{ color: var(--lavender); }
-  .project.sysan{ box-shadow: 5px 5px 0px 0px var(--lavender); }
-  .project.sysan .tag{ color: #6B3FD9; border-color: #E3D6FF; background: #F4EEFF; }
-  .project.sysan .project-links a::before{ color: var(--lavender); }
+  #sysan .eyebrow{ color: var(--coral); }
+  .project.sysan{ box-shadow: 5px 5px 0px 0px var(--coral); }
+  .project.sysan .tag{ color: #B8560A; border-color: #FFD9C2; background: #FFF1EA; }
+  .project.sysan .project-links a::before{ color: var(--coral); }
 
-  /* education & experience (timeline style) */
+  /* education & experience (amber/yellow) */
   .timeline{ display:flex; flex-direction:column; gap: 18px; }
   .timeline-item{
     background: var(--surface); border:3px solid var(--text); border-radius: var(--radius);
     padding: 18px 20px; position: relative; padding-left: 26px;
-    box-shadow: 4px 4px 0px 0px var(--sky);
+    box-shadow: 4px 4px 0px 0px var(--amber);
   }
   .timeline-item::before{
     content:""; position:absolute; left: 12px; top: 24px;
-    width: 8px; height: 8px; border-radius: 2px; background: var(--accent);
+    width: 8px; height: 8px; border-radius: 2px; background: var(--amber);
   }
   .timeline-head{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; align-items:baseline; }
   .timeline-head h3{ margin:0; font-size: 15.5px; font-family:'Quicksand'; font-weight:700; color: var(--text); }
@@ -174,13 +178,19 @@
   .timeline-org{ color: var(--text); font-size: 13px; font-family:'JetBrains Mono'; font-weight:700; margin: 4px 0 8px; }
   .timeline-item p{ color: var(--text); font-size: 14px; margin: 0; }
 
+  /* organisasi & volunteer (green) */
+  #organisasi{ border-top: 3px dashed var(--line); }
+  #organisasi .eyebrow{ color: var(--leaf); }
+  .timeline-item.org{ box-shadow: 4px 4px 0px 0px var(--leaf); }
+  .timeline-item.org::before{ background: var(--leaf); }
+
   /* certifications */
   .cert-grid{ display:grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
   @media (max-width: 620px){ .cert-grid{ grid-template-columns: 1fr; } }
   .cert-card{
     background: var(--surface); border:3px solid var(--text); border-radius: var(--radius);
     padding: 16px 18px; display:flex; align-items:center; gap: 12px;
-    box-shadow: 4px 4px 0px 0px var(--accent);
+    box-shadow: 4px 4px 0px 0px var(--rose);
   }
   .cert-card .cert-icon{ font-size: 20px; }
   .cert-card .cert-name{ font-size: 14px; color: var(--text); font-weight: 700; }
@@ -204,9 +214,10 @@
     <div class="nav-links">
       <a href="#about">About</a>
       <a href="#experience">Experience</a>
+      <a href="#organisasi">Organization</a>
       <a href="#projects">Data Projects</a>
       <a href="#qa">QA Projects</a>
-      <a href="#sysan">System Analyst Projects</a>
+      <a href="#sysan">SA Projects</a>
       <a href="#skills">Skills</a>
       <a href="#certifications">Certifications</a>
       <a href="#contact">Contact</a>
@@ -289,6 +300,46 @@
   </div>
 </section>
 
+<section id="organisasi">
+  <div class="wrap">
+    <h2>Organisasi &amp; Volunteer</h2>
+    <div class="timeline">
+      <div class="timeline-item org">
+        <div class="timeline-head">
+          <h3>Wakil Menteri Riset dan Teknologi</h3>
+          <span class="timeline-period">Maret 2023 – Desember 2023</span>
+        </div>
+        <div class="timeline-org">Badan Eksekutif Mahasiswa (BEM FT) Fakultas Teknik</div>
+        <p>• Mengkoordinasikan dan memimpin divisi Riset dan Teknologi, memastikan seluruh program kerja berjalan sesuai target waktu dan luaran.</p>
+        <p>• Memantau dan mengevaluasi pelaksanaan agenda kerja, memberikan arahan kepada ketua pelaksana kegiatan.</p>
+        <p>• Menyusun laporan evaluasi berkala dan mendokumentasikan hasil kegiatan divisi.</p>
+      </div>
+
+      <div class="timeline-item org">
+        <div class="timeline-head">
+          <h3>Ketua Pelaksana Engineering for Society</h3>
+          <span class="timeline-period">November 2023</span>
+        </div>
+        <div class="timeline-org">Badan Eksekutif Mahasiswa (BEM FT) Fakultas Teknik</div>
+        <p>• Memimpin perencanaan dan pelaksanaan program Engineering for Society dari awal hingga selesai.</p>
+        <p>• Berkoordinasi dengan seluruh pemangku kepentingan, termasuk sekolah, pembicara, dan peserta, untuk memastikan kelancaran acara.</p>
+        <p>• Berhasil menyelenggarakan dua kelas pelatihan (Microsoft Word dan Canva) dengan lebih dari 50 peserta pada hari pertama dan kedua.</p>
+      </div>
+
+      <div class="timeline-item org">
+        <div class="timeline-head">
+          <h3>PJ Pemerintahan Desa</h3>
+          <span class="timeline-period">Januari – Februari 2024</span>
+        </div>
+        <div class="timeline-org">Kuliah Kerja Nyata (KKN) Desa Capar</div>
+        <p>• Membantu administrasi pemerintahan desa, termasuk pengelolaan dokumen dan pengarsipan data warga secara terstruktur.</p>
+        <p>• Menangani hosting dan pembaruan website profil desa, memastikan informasi desa tersaji secara akurat dan terkini.</p>
+        <p>• Mengunggah dan memperbarui artikel konten website desa secara berkala untuk mendukung transparansi informasi publik.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="projects">
   <div class="wrap">
     <h2>Data Portfolio</h2>
@@ -346,29 +397,30 @@
 
     <div class="project qa">
       <div class="project-head">
-        <h3>Automation testing of the Linggarjati Web-based Application using Katalon Studio</h3>
+        <h3>TMDb — Mark as Favorite Feature Testing</h3>
         <span class="project-id">qa project 01</span>
       </div>
-      <p>Proyek ini berfokus pada otomatisasi pengujian fungsional untuk aplikasi berbasis web Linggarjati menggunakan Katalon Studio. Sebuah rangkaian pengujian komprehensif yang terdiri dari 45 kasus pengujian otomatis telah dikembangkan, yang menargetkan area fungsional utama dari aplikasi tersebut. Tujuan utamanya adalah untuk memastikan fungsionalitas yang andal pada seluruh fitur inti aplikasi.</p>
+      <p>Pengujian manual terhadap fitur "Mark as Favorite" pada website TMDb, mencakup penyusunan user story, requirement, dan test scenario untuk memastikan pengguna dapat menandai, mengakses, mengurutkan, dan menghapus film favorit dengan benar. Dilanjutkan dengan regression testing setelah perubahan bahasa situs (Indonesia → Inggris) untuk memastikan fitur tetap berfungsi normal.</p>
       <div class="tags">
-        <span class="tag">Automation Testing</span><span class="tag">Katalon Studio</span><span class="tag">Test Case Design</span><span class="tag">Bug Reporting</span>
+        <span class="tag">Manual Testing</span><span class="tag">Test Scenario</span><span class="tag">Regression Testing</span><span class="tag">Defect Report</span>
       </div>
       <div class="project-links">
-        <a href="https://github.com/ririfka08/automation-testing-linggarjati" target="_blank" rel="noopener">GitHub Repo</a>
+        <a href="https://github.com/ririfka08/technical-test-rifka" target="_blank" rel="noopener">GitHub Repo</a>
       </div>
     </div>
 
     <div class="project qa">
       <div class="project-head">
-        <h3>Manual testing of the Linggarjati Web-based Application using Katalon Studio</h3>
+        <h3>Manual &amp; Automation Testing of the Linggarjati Web-based Application using Katalon Studio</h3>
         <span class="project-id">qa project 02</span>
       </div>
-      <p>Proyek ini berfokus pada pengujian manual terhadap aplikasi berbasis web Linggarjati dengan menggunakan metode pengujian Black Box. Serangkaian pengujian yang komprehensif yang terdiri dari 45 kasus uji telah dikembangkan, yang terutama menargetkan aspek-aspek fungsional aplikasi tersebut.</p>
+      <p>Proyek ini mencakup pengujian manual (metode Black Box) dan otomatisasi pengujian menggunakan Katalon Studio untuk aplikasi berbasis web Linggarjati. Sebanyak 45 kasus uji dikembangkan untuk memvalidasi aspek fungsional utama aplikasi, yang kemudian sebagian besar diotomatisasi guna memastikan fungsionalitas yang andal dan efisiensi pengujian berulang.</p>
       <div class="tags">
-        <span class="tag">Manual Testing</span><span class="tag">Test Scenario</span><span class="tag">Test Case Design</span><span class="tag">Bug Reporting</span>
+        <span class="tag">Manual Testing</span><span class="tag">Automation Testing</span><span class="tag">Katalon Studio</span><span class="tag">Test Case Design</span><span class="tag">Bug Reporting</span>
       </div>
       <div class="project-links">
-        <a href="https://github.com/ririfka08/manual-testing-linggarjati" target="_blank" rel="noopener">GitHub Repo</a>
+        <a href="https://github.com/ririfka08/manual-testing-linggarjati" target="_blank" rel="noopener">Manual Testing Repo</a>
+        <a href="https://github.com/ririfka08/automation-testing-linggarjati" target="_blank" rel="noopener">Automation Testing Repo</a>
       </div>
     </div>
 
