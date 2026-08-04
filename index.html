@@ -137,6 +137,20 @@
   .project-links{ display:flex; gap: 16px; font-size: 13px; font-family:'JetBrains Mono'; font-weight:700; }
   .project-links a::before{ content: "→ "; color: var(--accent); }
 
+  /* insight bullets inside data project cards */
+  .insights{
+    list-style: none; margin: 0 0 14px; padding: 0;
+    border-top: 1px dashed var(--line); padding-top: 12px;
+  }
+  .insights li{
+    position: relative; padding-left: 18px; margin-bottom: 6px;
+    font-size: 13.5px; color: var(--text);
+  }
+  .insights li::before{
+    content: "▸"; position: absolute; left: 0; color: var(--accent-dim); font-weight: 700;
+  }
+  .insights li:last-child{ margin-bottom: 0; }
+
   /* skills */
   .skills-grid{ display:grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
   @media (max-width: 620px){ .skills-grid{ grid-template-columns: 1fr; } }
@@ -294,6 +308,7 @@
         <div class="timeline-org">Dinas Komunikasi dan Informatika Kabupaten Kuningan</div>
         <p>• Merapikan dan memvalidasi data harga sembako secara rutin ke dalam sistem informasi Diskominfo untuk mendukung akurasi pelaporan publik.</p>
         <p>• Melakukan pengujian dan perbaikan UI/UX website resmi Pemerintah Kabupaten Kuningan, mendokumentasikan temuan untuk ditindaklanjuti tim teknis.</p>
+        <p>• Membangun template Google Sheets untuk tracking hasil pengujian dan bug report, mempermudah dokumentasi dan koordinasi dengan tim teknis.</p>
         <p>• Mengelola dan memperbarui konten website instansi lebih dari 20 unggahan berita lokal secara berkala.</p>
         <p>• Berkoordinasi dengan tim teknis dalam identifikasi dan pelaporan bug sistem secara terstruktur.</p>
       </div>
@@ -352,6 +367,12 @@
         <span class="project-id">dataproject 01</span>
       </div>
       <p>Analisis data transaksional e-commerce menggunakan SQL murni — JOIN multi-tabel, window functions (RANK, LAG), CTE, dan segmentasi customer berdasarkan total spending.</p>
+      <ul class="insights">
+        <li>Kategori revenue tertinggi: Health &amp; Beauty (R$1,26 juta), diikuti Watches &amp; Gifts dan Bed, Bath &amp; Table</li>
+        <li>Customer segmentation menemukan pola 80/20 — hanya 1.218 customer "High Value" dari ~96 ribu, tapi kontribusi revenue-nya jauh melebihi proporsi jumlahnya</li>
+        <li>Kesenjangan waktu pengiriman antar-state hingga 29,4 hari, sinyal peluang optimasi logistik regional</li>
+        <li>Mendeteksi kategori dengan volume order tinggi tapi review rendah (Office Furniture, avg 3,49) — indikasi masalah kualitas</li>
+      </ul>
       <div class="tags">
         <span class="tag">SQL</span><span class="tag">Window Functions</span><span class="tag">CTE</span><span class="tag">SQLite</span>
       </div>
@@ -366,6 +387,12 @@
         <span class="project-id">data project 02</span>
       </div>
       <p>Analisis 52.000+ data buku dari Goodreads untuk merekomendasikan strategi genre dan katalog bagi penerbit — genre populer, pengaruh panjang halaman, tren rating, dan peluang bahasa yang underserved.</p>
+      <ul class="insights">
+        <li>Membersihkan 52.478 data mentah menjadi 46.077 buku siap analisis</li>
+        <li>Genre niche (Comic Strips, Church, Manga) justru unggul rating dari genre besar seperti Fiction umum</li>
+        <li>Buku pemenang award tidak selalu rating lebih tinggi — rating rata-rata non-pemenang malah sedikit lebih tinggi (4,00 vs 3,98)</li>
+        <li>Menemukan 4 pasar bahasa underserved (Greek Modern, Filipino, Japanese, Bulgarian) — rating tinggi, volume terbitan masih rendah</li>
+      </ul>
       <div class="tags">
         <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Plotly</span><span class="tag">Streamlit</span>
       </div>
@@ -381,6 +408,12 @@
         <span class="project-id">data project 03</span>
       </div>
       <p>Analisis multi-tabel (join dataset titles &amp; credits) untuk strategi konten platform streaming — genre underserved, perbandingan Movie vs TV Show, efisiensi negara produksi, hingga analisis level cast.</p>
+      <ul class="insights">
+        <li>TV Show unggul dari Movie — rating IMDb rata-rata 6,98 vs 6,25, dan lebih populer di antara penonton</li>
+        <li>Genre underserved: History, War, Documentation — rating tinggi (7,0–7,1) tapi volume konten masih sedikit dibanding Drama</li>
+        <li>Korea Selatan negara produksi paling efisien — rating rata-rata tertinggi (7,23) meski volume produksi jauh lebih kecil dari AS</li>
+        <li>Cast seperti Terry Jones, Aamir Khan, dan Michael Palin paling sering muncul di judul-judul rating ≥7,5</li>
+      </ul>
       <div class="tags">
         <span class="tag">Python</span><span class="tag">Table Joins</span><span class="tag">Plotly</span><span class="tag">Streamlit</span>
       </div>
