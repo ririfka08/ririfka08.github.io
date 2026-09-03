@@ -7,7 +7,7 @@
 <meta name="description" content="Data Analyst portfolio — Python, SQL, Data Visualization">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=Unbounded:wght@500;700;900&family=Quicksand:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg: #FFF7FB;
@@ -40,17 +40,11 @@
 
   body{
     margin:0;
-    background:
-      radial-gradient(900px 500px at 85% -8%, rgba(180,140,250,0.20), transparent 60%),
-      radial-gradient(700px 400px at 5% 10%, rgba(127,203,255,0.18), transparent 55%),
-      var(--bg);
+    background: var(--bg);
     color: var(--text);
     font-family: 'Quicksand', system-ui, sans-serif;
     line-height: 1.65;
   }
-
-  .mono{ font-family: 'JetBrains Mono', monospace; }
-  .pixel{ font-family: 'Silkscreen', monospace; }
 
   a{ color: var(--accent-dim); text-decoration: none; font-weight: 600; }
   a:hover{ text-decoration: underline; }
@@ -71,8 +65,6 @@
     display:flex; align-items:center; justify-content:space-between;
     padding-top: 14px; padding-bottom: 14px;
   }
-  .brand{ font-family:'Silkscreen'; font-weight:700; color: var(--text); font-size: 14px; }
-  .brand span{ color: var(--accent); }
   .nav-links{ display:flex; gap: 20px; font-size: 13.5px; flex-wrap: wrap; }
   .nav-links a{ color: var(--text); font-weight: 600; }
   .nav-links a:hover{ color: var(--accent-dim); text-decoration: none; }
@@ -90,8 +82,13 @@
   }
   .hero-name .hl{ background: var(--nj-green); padding: 0 8px; }
   .hero-name .wave{ font-size: 26px; }
+  header.hero .eyebrow{
+    font-family:'Quicksand'; font-size:12px; font-weight:700; letter-spacing:.08em;
+    color: var(--nj-green-deep); text-transform:uppercase; margin:0 0 10px;
+    border-left: 2px solid var(--nj-green-deep); padding-left:8px;
+  }
   .hero-role{
-    font-family:'JetBrains Mono'; font-size: 14px; color: var(--accent-dim);
+    font-family:'Quicksand'; font-size: 14px; color: var(--accent-dim);
     font-weight: 700; margin: 0 0 18px;
   }
   .hero-role .sep{ color: var(--text); margin: 0 4px; }
@@ -99,21 +96,22 @@
 
   .hero-cta{ display:flex; gap:12px; margin-top: 26px; flex-wrap: wrap; }
   .btn{
-    font-family:'Silkscreen'; font-size: 12px; padding: 12px 18px;
+    font-family:'Unbounded'; font-weight:700; font-size: 12px; padding: 12px 18px;
     border-radius: var(--radius); border: 3px solid var(--nj-ink);
-    box-shadow: 4px 4px 0px 0px var(--nj-ink);
-    transition: transform 0.08s ease;
+    transition: background .08s ease, transform .08s ease;
   }
-  .btn:hover{ text-decoration:none; transform: translate(2px, 2px); box-shadow: 2px 2px 0px 0px var(--nj-ink); }
+  .btn:hover{ text-decoration:none; transform: translateY(-1px); }
   .btn.primary{ background: var(--nj-green); color: var(--nj-ink); }
+  .btn.primary:hover{ background: var(--nj-pink); }
   .btn.ghost{ background: #fff; color: var(--nj-ink); }
+  .btn.ghost:hover{ background: var(--bg); }
 
   section{ padding: 52px 0; border-top: 3px dashed var(--line); }
   .eyebrow{
-    font-family:'Silkscreen'; font-size: 11px; color: var(--accent-dim);
-    letter-spacing: 0.04em; margin: 0 0 12px;
+    font-family:'Quicksand'; font-weight:700; font-size: 12px; color: var(--accent-dim);
+    text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 12px;
   }
-  h2{ font-family:'Silkscreen'; font-size: 19px; margin: 0 0 18px; color: var(--text); }
+  h2{ font-family:'Unbounded'; font-weight:700; font-size: 19px; margin: 0 0 18px; color: var(--text); }
   p.lead{ color: var(--text); max-width: 640px; }
 
   #about{ border-top: none; padding: 8px 0 52px; }
@@ -125,9 +123,8 @@
   .about-grid{ display:grid; grid-template-columns: 1.3fr 1fr; gap: 28px; }
   @media (max-width: 720px){ .about-grid{ grid-template-columns: 1fr; } }
   .schema{
-    background: var(--surface); border: 3px solid var(--nj-ink); border-radius: var(--radius);
-    padding: 16px 18px; font-family:'JetBrains Mono'; font-size: 13px;
-    box-shadow: 5px 5px 0px 0px var(--nj-ink);
+    background: var(--surface); border: 1.5px solid #E8D0DE; border-radius: var(--radius);
+    padding: 16px 18px; font-family:'Quicksand'; font-size: 13px;
   }
   .schema .row{ display:flex; justify-content:space-between; padding: 7px 0; border-bottom: 1px dashed var(--line); }
   .schema .row:last-child{ border-bottom:none; }
@@ -140,16 +137,16 @@
     box-shadow: 5px 5px 0px 0px var(--accent);
   }
   .project-head{ display:flex; align-items:baseline; justify-content:space-between; gap: 12px; flex-wrap:wrap; }
-  .project-id{ font-family:'JetBrains Mono'; font-size: 11px; color: var(--muted); }
+  .project-id{ font-family:'Quicksand'; font-size: 11px; color: var(--muted); }
   .project h3{ margin: 4px 0 8px; font-size: 17px; font-family:'Quicksand'; font-weight:700; }
   .project p{ color: var(--text); margin: 0 0 14px; font-size: 14.5px; }
   .tags{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom: 14px; }
   .tag{
-    font-family:'JetBrains Mono'; font-size: 11px; font-weight:700; padding: 4px 10px; border-radius: 999px;
+    font-family:'Quicksand'; font-size: 11px; font-weight:700; padding: 4px 10px; border-radius: 999px;
     background: var(--surface-2); color: var(--accent-dim); border: 2px solid var(--line);
   }
-  .project-links{ display:flex; gap: 16px; font-size: 13px; font-family:'JetBrains Mono'; font-weight:700; }
-  .project-links a::before{ content: "→ "; color: var(--accent); }
+  .project-links{ display:flex; gap: 16px; font-size: 13px; font-family:'Quicksand'; font-weight:700; }
+  .project-links a::before{ content: ""; color: var(--accent); }
 
   .insights{
     list-style: none; margin: 0 0 14px; padding: 0;
@@ -182,23 +179,26 @@
   }
   #qa, #sysan{ border-top:none; padding: 0 0 8px; }
   #qa .wrap, #sysan .wrap{ padding-top: 52px; }
-  #projects .eyebrow-row, #qa .eyebrow-row, #sysan .eyebrow-row{ display:flex; align-items:center; gap:10px; margin-bottom:8px; }
-  #projects .star, #qa .star, #sysan .star{ font-size: 17px; color: var(--nj-pink-deep); }
+  #projects .section-head, #qa .section-head, #sysan .section-head{
+    display:flex; align-items:baseline; gap:16px; flex-wrap:wrap; margin-bottom:12px;
+  }
   #projects .eyebrow, #qa .eyebrow, #sysan .eyebrow{
-    font-family:'JetBrains Mono'; font-size:12px; font-weight:700; letter-spacing:.08em;
+    font-family:'Quicksand'; font-size:12px; font-weight:700; letter-spacing:.08em;
     color: var(--nj-green-deep); text-transform:uppercase; margin:0;
+    border-left: 2px solid var(--nj-green-deep); padding-left:8px;
+    white-space: nowrap;
   }
   #projects h2, #qa h2, #sysan h2{
     font-family:'Unbounded'; font-weight:900; font-size: clamp(24px, 4.5vw, 32px);
-    line-height:1.1; letter-spacing:-0.01em; margin: 0 0 12px;
+    line-height:1.1; letter-spacing:-0.01em; margin: 0;
   }
-  #projects h2 .hl{ background: var(--nj-green); padding: 0 8px; }
+  #projects h2 .hl{ background: var(--nj-pink); padding: 0 8px; }
 
   /* ---------- PROJECT CAROUSEL — one project view at a time, big photo ---------- */
   .carousel{ position:relative; }
   .carousel-track{
     background: var(--surface); border: 3px solid var(--nj-ink); border-radius: var(--radius);
-    box-shadow: 6px 6px 0 var(--nj-ink); overflow:hidden;
+    overflow:hidden;
   }
   .slide{ display:none; }
   .slide.active{ display:block; }
@@ -217,81 +217,86 @@
     width:100%; height:260px; border:2px solid var(--nj-ink); border-radius:4px;
     background: repeating-linear-gradient(45deg, #fff, #fff 10px, #f2f2f2 10px, #f2f2f2 20px);
     display:flex; align-items:center; justify-content:center;
-    font-family:'JetBrains Mono'; font-size:11px; color: var(--muted); text-align:center; padding:8px;
+    font-family:'Quicksand'; font-size:11px; color: var(--muted); text-align:center; padding:8px;
   }
   .slide-body{ padding: 22px 24px; }
   .slide-body h3{ font-family:'Quicksand'; font-weight:700; font-size:17px; margin: 4px 0 8px; }
   .slide-body p.desc{ font-size:14px; margin:0 0 12px; color: var(--nj-ink); }
   .slide-insights{ list-style:none; margin:0 0 14px; padding: 10px 0 0; border-top: 1.5px dashed var(--nj-pink-deep); }
   .slide-insights li{ position:relative; padding-left:16px; margin-bottom:5px; font-size:13.5px; }
-  .slide-insights li::before{ content:"◆"; position:absolute; left:0; color: var(--nj-green-deep); font-size:8px; top:5px; }
-  .slide-tags{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px; }
-  .slide-tag{
-    font-family:'JetBrains Mono'; font-size:10.5px; font-weight:700; padding:4px 9px;
-    border:1.5px solid var(--nj-ink); border-radius:999px; background: var(--bg); color: var(--nj-ink);
-  }
+  .slide-insights li::before{ content:"—"; position:absolute; left:0; color: var(--nj-green-deep); font-size:12px; top:0; }
+  .slide-tags{ font-family:'Quicksand'; font-size:12px; color: var(--muted); margin-bottom:14px; }
+  .slide-tags .slide-tag{ color: var(--nj-ink); font-weight:700; }
+  .slide-tags .slide-tag:not(:last-child)::after{ content:" · "; color: #D9B8C9; font-weight:400; }
   .slide-links{ display:flex; gap:12px; flex-wrap:wrap; }
   .slide-bubble{
-    font-family:'JetBrains Mono'; font-size:12.5px; font-weight:700; color: var(--nj-ink);
-    background: var(--nj-green); border:2px solid var(--nj-ink); border-radius: 14px 14px 14px 2px;
+    font-family:'Quicksand'; font-size:12.5px; font-weight:700; color: var(--nj-ink);
+    background: #fff; border:2px solid var(--nj-ink); border-radius: 14px 14px 14px 2px;
     padding: 7px 14px; display:inline-flex; align-items:center; gap:6px;
-    box-shadow: 3px 3px 0 var(--nj-ink); text-decoration:none; transition: transform .08s ease;
+    text-decoration:none; transition: background .08s ease, transform .08s ease;
   }
-  .slide-bubble:hover{ transform: translate(1px,1px); box-shadow: 2px 2px 0 var(--nj-ink); text-decoration:none; }
-  .slide-bubble.alt{ background: var(--nj-pink); }
+  .slide-bubble:hover{ transform: translateY(-1px); text-decoration:none; }
+  .slide-bubble.gh{ background: #E8E1E5; }
+  .slide-bubble.gh:hover{ background: #DCD2D8; }
+  .slide-bubble.live{ background: var(--nj-green); }
+  .slide-bubble.live:hover{ background: #b3e85a; }
+  .slide-bubble.doc{ background: #CDEBFF; }
+  .slide-bubble.doc:hover{ background: #B3DFFF; }
 
   /* clear, obvious slide arrows — always visible, filled color, bold */
   .arrow{
     position:absolute; top: 200px; transform: translateY(-50%);
     width:48px; height:48px; border-radius:50%;
     background: var(--nj-green); border:3px solid var(--nj-ink);
-    box-shadow: 4px 4px 0 var(--nj-ink);
     display:flex; align-items:center; justify-content:center;
-    font-size:20px; font-weight:900; color: var(--nj-ink);
     cursor:pointer; user-select:none; z-index:3;
-    transition: transform .08s ease, box-shadow .08s ease;
+    transition: background .08s ease, transform .08s ease;
   }
-  .arrow:hover{ transform: translateY(-50%) translate(2px,2px); box-shadow: 2px 2px 0 var(--nj-ink); }
-  .arrow:active{ transform: translateY(-50%) translate(3px,3px); box-shadow: 1px 1px 0 var(--nj-ink); }
+  /* CSS-drawn triangle instead of text glyph — guarantees true left/right symmetry */
+  .arrow::before{ content:""; width:0; height:0; display:block; }
+  .arrow.prev::before{ border-style:solid; border-width:8px 10px 8px 0; border-color:transparent var(--nj-ink) transparent transparent; margin-left:-2px; }
+  .arrow.next::before{ border-style:solid; border-width:8px 0 8px 10px; border-color:transparent transparent transparent var(--nj-ink); margin-right:-2px; }
+  .arrow:hover{ background: var(--nj-pink); }
+  .arrow:active{ transform: translateY(-50%) scale(0.92); }
   .arrow.prev{ left:-20px; }
   .arrow.next{ right:-20px; }
   @media (max-width: 640px){
-    .arrow{ width:40px; height:40px; font-size:17px; top:170px; }
+    .arrow{ width:40px; height:40px; top:170px; }
+    .arrow.prev::before{ border-width:7px 9px 7px 0; }
+    .arrow.next::before{ border-width:7px 0 7px 9px; }
     .arrow.prev{ left:-12px; }
     .arrow.next{ right:-12px; }
   }
 
   /* indicator — counter + dots, always shows how many projects exist */
   .indicator{ display:flex; align-items:center; justify-content:center; gap:10px; margin-top:16px; }
-  .counter{ font-family:'JetBrains Mono'; font-size:12px; font-weight:700; color: var(--muted); }
+  .counter{ font-family:'Quicksand'; font-size:12px; font-weight:700; color: var(--muted); }
   .dots{ display:flex; gap:7px; }
   .dot{ width:9px; height:9px; border-radius:50%; background:#fff; border:2px solid var(--nj-ink); cursor:pointer; padding:0; }
   .dot.active{ background: var(--nj-green); }
 
   #projects .slide-visual{ --panel-bg: var(--nj-pink); }
-  #qa .slide-visual{ --panel-bg: #EAF8FF; }
-  #sysan .slide-visual{ --panel-bg: #FFF1EA; }
-  #qa .eyebrow{ color: #1C8FC9; }
-  #qa .star{ color: var(--sky); }
+  #qa .eyebrow{ color: #1C8FC9; border-left-color: #1C8FC9; }
   #qa h2 .hl{ background: #EAF8FF; }
-  #sysan .eyebrow{ color: #B8560A; }
-  #sysan .star{ color: var(--coral); }
+  #qa .slide-visual{ --panel-bg: #EAF8FF; }
+  #sysan .eyebrow{ color: #B8560A; border-left-color: #B8560A; }
   #sysan h2 .hl{ background: #FFF1EA; }
+  #sysan .slide-visual{ --panel-bg: #FFF1EA; }
 
   .skills-grid{ display:grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
   @media (max-width: 620px){ .skills-grid{ grid-template-columns: 1fr; } }
   .skill-card{
-    background: var(--surface); border:3px solid var(--text); border-radius: var(--radius);
-    padding: 16px 18px; box-shadow: 4px 4px 0px 0px var(--mint);
+    background: var(--surface); border:1.5px solid var(--line); border-radius: var(--radius);
+    padding: 16px 18px; border-left: 3px solid var(--mint);
   }
-  .skill-card .cat{ font-family:'Silkscreen'; color: var(--accent-dim); font-size: 11px; margin-bottom: 8px; }
+  .skill-card .cat{ font-family:'Quicksand'; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color: var(--accent-dim); font-size: 11px; margin-bottom: 8px; }
   .skill-card .items{ color: var(--text); font-size: 14px; font-weight: 600; }
 
   .timeline{ display:flex; flex-direction:column; gap: 18px; }
   .timeline-item{
-    background: var(--surface); border:3px solid var(--text); border-radius: var(--radius);
+    background: var(--surface); border:1.5px solid var(--line); border-radius: var(--radius);
     padding: 18px 20px; position: relative; padding-left: 26px;
-    box-shadow: 4px 4px 0px 0px var(--amber);
+    border-left: 3px solid var(--amber);
   }
   .timeline-item::before{
     content:""; position:absolute; left: 12px; top: 24px;
@@ -299,26 +304,26 @@
   }
   .timeline-head{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; align-items:baseline; }
   .timeline-head h3{ margin:0; font-size: 15.5px; font-family:'Quicksand'; font-weight:700; color: var(--text); }
-  .timeline-period{ font-family:'JetBrains Mono'; font-size: 11.5px; color: var(--muted); }
-  .timeline-org{ color: var(--text); font-size: 13px; font-family:'JetBrains Mono'; font-weight:700; margin: 4px 0 8px; }
+  .timeline-period{ font-family:'Quicksand'; font-size: 11.5px; color: var(--muted); }
+  .timeline-org{ color: var(--text); font-size: 13px; font-family:'Quicksand'; font-weight:700; margin: 4px 0 8px; }
   .timeline-item p{ color: var(--text); font-size: 14px; margin: 0; }
 
-  .timeline-item.org{ box-shadow: 4px 4px 0px 0px var(--leaf); }
+  .timeline-item.org{ border-left-color: var(--leaf); }
   .timeline-item.org::before{ background: var(--leaf); }
 
   .cert-grid{ display:grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
   @media (max-width: 620px){ .cert-grid{ grid-template-columns: 1fr; } }
   .cert-card{
-    background: var(--surface); border:3px solid var(--text); border-radius: var(--radius);
+    background: var(--surface); border:1.5px solid var(--line); border-radius: var(--radius);
     padding: 16px 18px; display:flex; align-items:center; gap: 12px;
-    box-shadow: 4px 4px 0px 0px var(--rose);
+    border-left: 3px solid var(--rose);
   }
   .cert-card .cert-icon{ font-size: 20px; }
   .cert-card .cert-name{ font-size: 14px; color: var(--text); font-weight: 700; }
-  .cert-card .cert-issuer{ font-size: 12px; color: var(--muted); font-family:'JetBrains Mono'; }
+  .cert-card .cert-issuer{ font-size: 12px; color: var(--muted); font-family:'Quicksand'; }
 
   footer{ padding: 44px 0 56px; }
-  .footer-links{ display:flex; gap: 20px; flex-wrap: wrap; font-family:'Silkscreen'; font-size: 12px; }
+  .footer-links{ display:flex; gap: 20px; flex-wrap: wrap; font-family:'Unbounded'; font-weight:700; font-size: 12px; }
   .footer-note{ color: var(--muted); font-size: 12.5px; margin-top: 20px; }
 
   @media (prefers-reduced-motion: reduce){
@@ -347,7 +352,7 @@
 <div class="checker"></div>
 <header class="hero">
   <div class="wrap">
-    <div class="eyebrow-row"><span class="star">✦</span><p class="eyebrow">Fresh IT Graduate</p></div>
+    <div class="eyebrow-row"><p class="eyebrow">Fresh IT Graduate</p></div>
     <h1 class="hero-name">Hi, I'm <span class="hl">Rifka</span> </h1>
     <p class="hero-role">Data Analyst <span class="sep">·</span> Quality Assurance <span class="sep">·</span> System Analyst</p>
     <p class="lead hero-desc">
@@ -358,7 +363,7 @@
     </p>
 
     <div class="hero-cta">
-      <a class="btn primary" href="#projects">→ View Projects</a>
+      <a class="btn primary" href="#projects">View Projects</a>
       <a class="btn ghost" href="https://drive.google.com/drive/folders/13khyTTaDWVKeiqVgXi7-bWZrSzj-7yUu?usp=drive_link" target="_blank" rel="noopener">Resume</a>
       <a class="btn ghost" href="https://github.com/ririfka08" target="_blank" rel="noopener">GitHub</a>
       <a class="btn ghost" href="https://www.linkedin.com/in/rifkaumdati" target="_blank" rel="noopener">LinkedIn</a>
@@ -455,13 +460,15 @@
 
 <section id="projects">
   <div class="wrap">
-    <div class="eyebrow-row"><span class="star">✦</span><p class="eyebrow">Data Portfolio</p></div>
-    <h2>Case studies in data <span class="hl">analysis</span> &amp; visualization</h2>
+    <div class="section-head">
+      <p class="eyebrow">Data Portfolio</p>
+      <h2>Case studies in <span class="hl">Data Analysis</span></h2>
+    </div>
     <p class="lead" style="margin-bottom:30px;">Three data analyst projects — from pure SQL to interactive dashboards deployed live. Use the arrows or dots to browse.</p>
 
     <div class="carousel">
-      <div class="arrow prev" aria-label="Previous project">←</div>
-      <div class="arrow next" aria-label="Next project">→</div>
+      <div class="arrow prev" aria-label="Previous project"></div>
+      <div class="arrow next" aria-label="Next project"></div>
 
       <div class="carousel-track">
         <div class="slide active">
@@ -479,7 +486,7 @@
               <span class="slide-tag">Google Sheets</span><span class="slide-tag">Looker Studio</span><span class="slide-tag">Excel</span><span class="slide-tag">Streamlit</span>
             </div>
             <div class="slide-links">
-              <a class="slide-bubble" href="https://github.com/ririfka08/ecommerce-sql-analysis" target="_blank" rel="noopener">→ GitHub Repo</a>
+              <a class="slide-bubble gh" href="https://github.com/ririfka08/ecommerce-sql-analysis" target="_blank" rel="noopener">GitHub Repo</a>
             </div>
           </div>
         </div>
@@ -499,8 +506,8 @@
               <span class="slide-tag">Python</span><span class="slide-tag">Pandas</span><span class="slide-tag">Plotly</span><span class="slide-tag">Streamlit</span>
             </div>
             <div class="slide-links">
-              <a class="slide-bubble" href="https://books-analysis-dashboard-rifka.streamlit.app/" target="_blank" rel="noopener">→ Live Dashboard</a>
-              <a class="slide-bubble alt" href="https://github.com/ririfka08/books-analysis-dashboard" target="_blank" rel="noopener">→ GitHub Repo</a>
+              <a class="slide-bubble live" href="https://books-analysis-dashboard-rifka.streamlit.app/" target="_blank" rel="noopener">Live Dashboard</a>
+              <a class="slide-bubble gh" href="https://github.com/ririfka08/books-analysis-dashboard" target="_blank" rel="noopener">GitHub Repo</a>
             </div>
           </div>
         </div>
@@ -520,8 +527,8 @@
               <span class="slide-tag">Python</span><span class="slide-tag">Table Joins</span><span class="slide-tag">Plotly</span><span class="slide-tag">Streamlit</span>
             </div>
             <div class="slide-links">
-              <a class="slide-bubble" href="https://netflix-analysis-dashboard-rifka.streamlit.app/" target="_blank" rel="noopener">→ Live Dashboard</a>
-              <a class="slide-bubble alt" href="https://github.com/ririfka08/netflix-analysis-dashboard" target="_blank" rel="noopener">→ GitHub Repo</a>
+              <a class="slide-bubble live" href="https://netflix-analysis-dashboard-rifka.streamlit.app/" target="_blank" rel="noopener">Live Dashboard</a>
+              <a class="slide-bubble gh" href="https://github.com/ririfka08/netflix-analysis-dashboard" target="_blank" rel="noopener">GitHub Repo</a>
             </div>
           </div>
         </div>
@@ -541,13 +548,15 @@
 
 <section id="qa">
   <div class="wrap">
-    <div class="eyebrow-row"><span class="star">✦</span><p class="eyebrow">Quality Assurance Portfolio</p></div>
-    <h2>Manual &amp; automation <span class="hl">testing</span> case studies</h2>
+    <div class="section-head">
+      <p class="eyebrow">Quality Assurance Portfolio</p>
+      <h2>Case studies in <span class="hl">Quality Assurance</span></h2>
+    </div>
     <p class="lead" style="margin-bottom:30px;">Alongside data analysis, I'm also open to QA Analyst roles — here are my manual &amp; automation testing case studies. Use the arrows or dots to browse.</p>
 
     <div class="carousel">
-      <div class="arrow prev" aria-label="Previous project">←</div>
-      <div class="arrow next" aria-label="Next project">→</div>
+      <div class="arrow prev" aria-label="Previous project"></div>
+      <div class="arrow next" aria-label="Next project"></div>
 
       <div class="carousel-track">
         <div class="slide active">
@@ -556,12 +565,12 @@
           </div>
           <div class="slide-body">
             <h3>TMDb — Mark as Favorite Feature Testing</h3>
-            <p class="desc">Manual testing of the "Mark as Favorite" feature on the TMDb website, covering user story, requirement, and test scenario design to verify users can mark, access, sort, and remove favorite movies correctly. Followed by regression testing after a site language change (Indonesian → English) to confirm the feature still worked as expected.</p>
+            <p class="desc">Manual testing of the "Mark as Favorite" feature on the TMDb website, covering user story, requirement, and test scenario design to verify users can mark, access, sort, and remove favorite movies correctly. Followed by regression testing after a site language change (Indonesian English) to confirm the feature still worked as expected.</p>
             <div class="slide-tags">
               <span class="slide-tag">Manual Testing</span><span class="slide-tag">Test Scenario</span><span class="slide-tag">Regression Testing</span><span class="slide-tag">Defect Report</span>
             </div>
             <div class="slide-links">
-              <a class="slide-bubble" href="https://github.com/ririfka08/technical-test-rifka" target="_blank" rel="noopener">→ GitHub Repo</a>
+              <a class="slide-bubble gh" href="https://github.com/ririfka08/technical-test-rifka" target="_blank" rel="noopener">GitHub Repo</a>
             </div>
           </div>
         </div>
@@ -577,8 +586,8 @@
               <span class="slide-tag">Manual Testing</span><span class="slide-tag">Automation Testing</span><span class="slide-tag">Katalon Studio</span><span class="slide-tag">Test Case Design</span><span class="slide-tag">Bug Reporting</span>
             </div>
             <div class="slide-links">
-              <a class="slide-bubble" href="https://github.com/ririfka08/manual-testing-linggarjati" target="_blank" rel="noopener">→ Manual Testing Repo</a>
-              <a class="slide-bubble alt" href="https://github.com/ririfka08/automation-testing-linggarjati" target="_blank" rel="noopener">→ Automation Testing Repo</a>
+              <a class="slide-bubble gh" href="https://github.com/ririfka08/manual-testing-linggarjati" target="_blank" rel="noopener">Manual Testing Repo</a>
+              <a class="slide-bubble gh" href="https://github.com/ririfka08/automation-testing-linggarjati" target="_blank" rel="noopener">Automation Testing Repo</a>
             </div>
           </div>
         </div>
@@ -594,7 +603,7 @@
               <span class="slide-tag">Manual Testing</span><span class="slide-tag">UAT</span><span class="slide-tag">Bug Reporting</span>
             </div>
             <div class="slide-links">
-              <a class="slide-bubble" href="https://github.com/ririfka08/uat-test-tokped" target="_blank" rel="noopener">→ GitHub Repo</a>
+              <a class="slide-bubble gh" href="https://github.com/ririfka08/uat-test-tokped" target="_blank" rel="noopener">GitHub Repo</a>
             </div>
           </div>
         </div>
@@ -614,19 +623,21 @@
 
 <section id="sysan">
   <div class="wrap">
-    <div class="eyebrow-row"><span class="star">✦</span><p class="eyebrow">System Analyst Portfolio</p></div>
-    <h2>System <span class="hl">analysis</span> &amp; design case studies</h2>
+    <div class="section-head">
+      <p class="eyebrow">System Analyst Portfolio</p>
+      <h2>Case studies in <span class="hl">System Analyst</span></h2>
+    </div>
     <p class="lead" style="margin-bottom:30px;">I'm also open to System Analyst roles — here are my system analysis and design case studies. Use the arrows or dots to browse.</p>
 
     <div class="carousel">
-      <div class="arrow prev" aria-label="Previous project">←</div>
-      <div class="arrow next" aria-label="Next project">→</div>
+      <div class="arrow prev" aria-label="Previous project"></div>
+      <div class="arrow next" aria-label="Next project"></div>
 
       <div class="carousel-track">
         <div class="slide active">
           <div class="slide-visual">
             <!-- TODO: add a screenshot of a diagram (Use Case / Activity / Sequence) from this project -->
-            <div class="ph">loading...</div>
+            <div class="ph">[ diagram screenshot<br>Automated Essay Scoring ]</div>
           </div>
           <div class="slide-body">
             <h3>Waterfall Method Implementation for a Web-based Automated Essay Scoring App using LSTM</h3>
@@ -635,7 +646,7 @@
               <span class="slide-tag">Flowchart</span><span class="slide-tag">ERD</span><span class="slide-tag">Use Case Diagram</span><span class="slide-tag">Activity Diagram</span><span class="slide-tag">Sequence Diagram</span>
             </div>
             <div class="slide-links">
-              <a class="slide-bubble" href="https://drive.google.com/file/d/1F2MbSCUv5y4k4u3VB1V6mNuC46mMIZhK/view?usp=drive_link" target="_blank" rel="noopener">→ Document Link</a>
+              <a class="slide-bubble doc" href="https://drive.google.com/file/d/1F2MbSCUv5y4k4u3VB1V6mNuC46mMIZhK/view?usp=drive_link" target="_blank" rel="noopener">Document Link</a>
             </div>
           </div>
         </div>
@@ -643,7 +654,7 @@
         <div class="slide">
           <div class="slide-visual">
             <!-- TODO: add a screenshot of a diagram/mockup from this project -->
-            <div class="ph">loading...</div>
+            <div class="ph">[ diagram screenshot<br>Academic Information System ]</div>
           </div>
           <div class="slide-body">
             <h3>Design &amp; Development of a Web-based University Academic Information System using the Prototyping Method</h3>
@@ -652,7 +663,7 @@
               <span class="slide-tag">Flowchart</span><span class="slide-tag">ERD</span><span class="slide-tag">Use Case Diagram</span><span class="slide-tag">Activity Diagram</span><span class="slide-tag">Sequence Diagram</span>
             </div>
             <div class="slide-links">
-              <a class="slide-bubble" href="https://drive.google.com/file/d/1F2MbSCUv5y4k4u3VB1V6mNuC46mMIZhK/view?usp=drive_link" target="_blank" rel="noopener">→ Document Link</a>
+              <a class="slide-bubble doc" href="https://drive.google.com/file/d/1F2MbSCUv5y4k4u3VB1V6mNuC46mMIZhK/view?usp=drive_link" target="_blank" rel="noopener">Document Link</a>
             </div>
           </div>
         </div>
@@ -660,7 +671,7 @@
         <div class="slide">
           <div class="slide-visual">
             <!-- TODO: add a screenshot of a diagram from the SRS document -->
-            <div class="ph">loading...</div>
+            <div class="ph">[ diagram screenshot<br>Camera Rental System (RECAM) ]</div>
           </div>
           <div class="slide-body">
             <h3>Software Requirements Specification for a Camera Rental System (RECAM)</h3>
@@ -669,7 +680,7 @@
               <span class="slide-tag">Flowchart</span><span class="slide-tag">DFD</span><span class="slide-tag">ERD</span><span class="slide-tag">Use Case Diagram</span><span class="slide-tag">Activity Diagram</span><span class="slide-tag">SRS Documentation</span>
             </div>
             <div class="slide-links">
-              <a class="slide-bubble" href="https://drive.google.com/file/d/1F2MbSCUv5y4k4u3VB1V6mNuC46mMIZhK/view?usp=drive_link" target="_blank" rel="noopener">→ Document Link</a>
+              <a class="slide-bubble doc" href="https://drive.google.com/file/d/1F2MbSCUv5y4k4u3VB1V6mNuC46mMIZhK/view?usp=drive_link" target="_blank" rel="noopener">Document Link</a>
             </div>
           </div>
         </div>
