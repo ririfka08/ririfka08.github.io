@@ -28,7 +28,6 @@
     --rose: #FF8FA3;
     --radius: 6px;
 
-    /* NewJeans-coded palette — scoped to #projects */
     --nj-green: #C8F26E;
     --nj-green-deep: #4A9E2F;
     --nj-pink: #FFD3E8;
@@ -62,7 +61,6 @@
 
   .wrap{ max-width: 880px; margin: 0 auto; padding: 0 24px; }
 
-  /* ---------- NAV ---------- */
   nav{
     position: sticky; top:0; z-index: 10;
     background: rgba(255,247,251,0.9);
@@ -79,7 +77,6 @@
   .nav-links a{ color: var(--text); font-weight: 600; }
   .nav-links a:hover{ color: var(--accent-dim); text-decoration: none; }
 
-  /* ---------- HERO (about me intro) — NewJeans-coded ---------- */
   header.hero{ padding: 60px 0 52px; position:relative; overflow:hidden; border-top: none; }
   header.hero::before{
     content:""; position:absolute; top:-30px; right:-60px; width:280px; height:280px;
@@ -111,7 +108,6 @@
   .btn.primary{ background: var(--nj-green); color: var(--nj-ink); }
   .btn.ghost{ background: #fff; color: var(--nj-ink); }
 
-  /* ---------- SECTIONS ---------- */
   section{ padding: 52px 0; border-top: 3px dashed var(--line); }
   .eyebrow{
     font-family:'Silkscreen'; font-size: 11px; color: var(--accent-dim);
@@ -120,7 +116,6 @@
   h2{ font-family:'Silkscreen'; font-size: 19px; margin: 0 0 18px; color: var(--text); }
   p.lead{ color: var(--text); max-width: 640px; }
 
-  /* about — NewJeans-coded */
   #about{ border-top: none; padding: 8px 0 52px; }
   #about h2{
     font-family:'Unbounded'; font-weight:900; font-size: clamp(22px, 4vw, 28px);
@@ -139,7 +134,6 @@
   .schema .k{ color: var(--muted); }
   .schema .v{ color: var(--nj-ink); font-weight: 700; }
 
-  /* projects (data) */
   .project{
     background: var(--surface); border:3px solid var(--text); border-radius: var(--radius);
     padding: 22px; margin-bottom: 18px;
@@ -157,7 +151,6 @@
   .project-links{ display:flex; gap: 16px; font-size: 13px; font-family:'JetBrains Mono'; font-weight:700; }
   .project-links a::before{ content: "→ "; color: var(--accent); }
 
-  /* insight bullets inside data project cards */
   .insights{
     list-style: none; margin: 0 0 14px; padding: 0;
     border-top: 1px dashed var(--line); padding-top: 12px;
@@ -171,7 +164,6 @@
   }
   .insights li:last-child{ margin-bottom: 0; }
 
-  /* ---------- DATA PORTFOLIO ---------- */
   .checker{
     height: 16px;
     background-image:
@@ -202,54 +194,83 @@
   }
   #projects h2 .hl{ background: var(--nj-green); padding: 0 8px; }
 
-  .nj-grid{ display:flex; flex-direction:column; gap: 24px; }
-  .nj-card{
+  /* ---------- PROJECT CAROUSEL — one project view at a time, big photo ---------- */
+  .carousel{ position:relative; }
+  .carousel-track{
     background: var(--surface); border: 3px solid var(--nj-ink); border-radius: var(--radius);
-    box-shadow: 6px 6px 0 var(--nj-ink);
-    display:grid; grid-template-columns: 220px 1fr; overflow:hidden;
+    box-shadow: 6px 6px 0 var(--nj-ink); overflow:hidden;
   }
-  @media (max-width: 680px){ .nj-card{ grid-template-columns: 1fr; } }
-  .nj-visual{
-    background: var(--panel-bg, var(--nj-pink)); border-right: 3px solid var(--nj-ink);
-    display:flex; align-items:center; justify-content:center; position:relative;
-    min-height: 170px; padding: 14px;
+  .slide{ display:none; }
+  .slide.active{ display:block; }
+
+  .slide-visual{
+    background: var(--panel-bg, var(--nj-pink));
+    border-bottom: 3px solid var(--nj-ink);
+    display:flex; align-items:center; justify-content:center;
+    padding: 18px;
   }
-  @media (max-width: 680px){ .nj-visual{ border-right:none; border-bottom:3px solid var(--nj-ink); } }
-  .nj-visual img{
-    width:100%; height:150px; object-fit:cover; border:2px solid var(--nj-ink); border-radius:2px; display:block;
+  .slide-visual img{
+    width:100%; height:auto; max-height:460px; object-fit:contain;
+    border:2px solid var(--nj-ink); border-radius:4px; display:block; background:#fff;
   }
-  .nj-visual .ph{
-    width:100%; height:150px; border:2px solid var(--nj-ink); border-radius:2px;
+  .slide-visual .ph{
+    width:100%; height:260px; border:2px solid var(--nj-ink); border-radius:4px;
     background: repeating-linear-gradient(45deg, #fff, #fff 10px, #f2f2f2 10px, #f2f2f2 20px);
     display:flex; align-items:center; justify-content:center;
-    font-family:'JetBrains Mono'; font-size:10.5px; color: var(--muted); text-align:center; padding:8px;
+    font-family:'JetBrains Mono'; font-size:11px; color: var(--muted); text-align:center; padding:8px;
   }
-  .nj-body{ padding: 22px 24px; }
-  .nj-id{ font-family:'JetBrains Mono'; font-size:11px; color: var(--muted); }
-  .nj-card h3{ font-family:'Quicksand'; font-weight:700; font-size:17px; margin: 4px 0 8px; }
-  .nj-card p.desc{ font-size:14px; margin:0 0 12px; color: var(--nj-ink); }
-  .nj-insights{ list-style:none; margin:0 0 14px; padding: 10px 0 0; border-top: 1.5px dashed var(--nj-pink-deep); }
-  .nj-insights li{ position:relative; padding-left:16px; margin-bottom:5px; font-size:13.5px; }
-  .nj-insights li::before{ content:"◆"; position:absolute; left:0; color: var(--nj-green-deep); font-size:8px; top:5px; }
-  .nj-tags{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px; }
-  .nj-tag{
+  .slide-body{ padding: 22px 24px; }
+  .slide-body h3{ font-family:'Quicksand'; font-weight:700; font-size:17px; margin: 4px 0 8px; }
+  .slide-body p.desc{ font-size:14px; margin:0 0 12px; color: var(--nj-ink); }
+  .slide-insights{ list-style:none; margin:0 0 14px; padding: 10px 0 0; border-top: 1.5px dashed var(--nj-pink-deep); }
+  .slide-insights li{ position:relative; padding-left:16px; margin-bottom:5px; font-size:13.5px; }
+  .slide-insights li::before{ content:"◆"; position:absolute; left:0; color: var(--nj-green-deep); font-size:8px; top:5px; }
+  .slide-tags{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px; }
+  .slide-tag{
     font-family:'JetBrains Mono'; font-size:10.5px; font-weight:700; padding:4px 9px;
     border:1.5px solid var(--nj-ink); border-radius:999px; background: var(--bg); color: var(--nj-ink);
   }
-  .nj-links{ display:flex; gap:12px; flex-wrap:wrap; }
-  .nj-bubble{
+  .slide-links{ display:flex; gap:12px; flex-wrap:wrap; }
+  .slide-bubble{
     font-family:'JetBrains Mono'; font-size:12.5px; font-weight:700; color: var(--nj-ink);
     background: var(--nj-green); border:2px solid var(--nj-ink); border-radius: 14px 14px 14px 2px;
     padding: 7px 14px; display:inline-flex; align-items:center; gap:6px;
     box-shadow: 3px 3px 0 var(--nj-ink); text-decoration:none; transition: transform .08s ease;
   }
-  .nj-bubble:hover{ transform: translate(1px,1px); box-shadow: 2px 2px 0 var(--nj-ink); text-decoration:none; }
-  .nj-bubble.alt{ background: var(--nj-pink); }
+  .slide-bubble:hover{ transform: translate(1px,1px); box-shadow: 2px 2px 0 var(--nj-ink); text-decoration:none; }
+  .slide-bubble.alt{ background: var(--nj-pink); }
 
-  /* section-specific panel tint (photo frame background) — card structure stays identical everywhere */
-  #projects .nj-visual{ --panel-bg: var(--nj-pink); }
-  #qa .nj-visual{ --panel-bg: #EAF8FF; }
-  #sysan .nj-visual{ --panel-bg: #FFF1EA; }
+  /* clear, obvious slide arrows — always visible, filled color, bold */
+  .arrow{
+    position:absolute; top: 200px; transform: translateY(-50%);
+    width:48px; height:48px; border-radius:50%;
+    background: var(--nj-green); border:3px solid var(--nj-ink);
+    box-shadow: 4px 4px 0 var(--nj-ink);
+    display:flex; align-items:center; justify-content:center;
+    font-size:20px; font-weight:900; color: var(--nj-ink);
+    cursor:pointer; user-select:none; z-index:3;
+    transition: transform .08s ease, box-shadow .08s ease;
+  }
+  .arrow:hover{ transform: translateY(-50%) translate(2px,2px); box-shadow: 2px 2px 0 var(--nj-ink); }
+  .arrow:active{ transform: translateY(-50%) translate(3px,3px); box-shadow: 1px 1px 0 var(--nj-ink); }
+  .arrow.prev{ left:-20px; }
+  .arrow.next{ right:-20px; }
+  @media (max-width: 640px){
+    .arrow{ width:40px; height:40px; font-size:17px; top:170px; }
+    .arrow.prev{ left:-12px; }
+    .arrow.next{ right:-12px; }
+  }
+
+  /* indicator — counter + dots, always shows how many projects exist */
+  .indicator{ display:flex; align-items:center; justify-content:center; gap:10px; margin-top:16px; }
+  .counter{ font-family:'JetBrains Mono'; font-size:12px; font-weight:700; color: var(--muted); }
+  .dots{ display:flex; gap:7px; }
+  .dot{ width:9px; height:9px; border-radius:50%; background:#fff; border:2px solid var(--nj-ink); cursor:pointer; padding:0; }
+  .dot.active{ background: var(--nj-green); }
+
+  #projects .slide-visual{ --panel-bg: var(--nj-pink); }
+  #qa .slide-visual{ --panel-bg: #EAF8FF; }
+  #sysan .slide-visual{ --panel-bg: #FFF1EA; }
   #qa .eyebrow{ color: #1C8FC9; }
   #qa .star{ color: var(--sky); }
   #qa h2 .hl{ background: #EAF8FF; }
@@ -257,7 +278,6 @@
   #sysan .star{ color: var(--coral); }
   #sysan h2 .hl{ background: #FFF1EA; }
 
-  /* skills */
   .skills-grid{ display:grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
   @media (max-width: 620px){ .skills-grid{ grid-template-columns: 1fr; } }
   .skill-card{
@@ -267,9 +287,6 @@
   .skill-card .cat{ font-family:'Silkscreen'; color: var(--accent-dim); font-size: 11px; margin-bottom: 8px; }
   .skill-card .items{ color: var(--text); font-size: 14px; font-weight: 600; }
 
-  /* qa & system analyst sections now use the shared .nj-card structure — see panel tint rules above */
-
-  /* education & experience (amber/yellow) */
   .timeline{ display:flex; flex-direction:column; gap: 18px; }
   .timeline-item{
     background: var(--surface); border:3px solid var(--text); border-radius: var(--radius);
@@ -286,13 +303,9 @@
   .timeline-org{ color: var(--text); font-size: 13px; font-family:'JetBrains Mono'; font-weight:700; margin: 4px 0 8px; }
   .timeline-item p{ color: var(--text); font-size: 14px; margin: 0; }
 
-  /* organisasi & volunteer (green) */
-  #organisasi{ border-top: 3px dashed var(--line); }
-  #organisasi .eyebrow{ color: var(--leaf); }
   .timeline-item.org{ box-shadow: 4px 4px 0px 0px var(--leaf); }
   .timeline-item.org::before{ background: var(--leaf); }
 
-  /* certifications */
   .cert-grid{ display:grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
   @media (max-width: 620px){ .cert-grid{ grid-template-columns: 1fr; } }
   .cert-card{
@@ -304,7 +317,6 @@
   .cert-card .cert-name{ font-size: 14px; color: var(--text); font-weight: 700; }
   .cert-card .cert-issuer{ font-size: 12px; color: var(--muted); font-family:'JetBrains Mono'; }
 
-  /* footer */
   footer{ padding: 44px 0 56px; }
   .footer-links{ display:flex; gap: 20px; flex-wrap: wrap; font-family:'Silkscreen'; font-size: 12px; }
   .footer-note{ color: var(--muted); font-size: 12.5px; margin-top: 20px; }
@@ -320,8 +332,8 @@
   <div class="wrap">
     <div class="nav-links">
       <a href="#about">About</a>
+      <a href="#education">Education</a>
       <a href="#experience">Experience</a>
-      <a href="#organisasi">Organization</a>
       <a href="#projects">Data Projects</a>
       <a href="#qa">QA Projects</a>
       <a href="#sysan">SA Projects</a>
@@ -380,9 +392,27 @@
   </div>
 </section>
 
+<section id="education">
+  <div class="wrap">
+    <h2>Education</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-head">
+          <h3>Universitas Jenderal Soedirman — Informatics</h3>
+          <span class="timeline-period">2021 – 2025</span>
+        </div>
+        <div class="timeline-org">Informatics</div>
+        <p>• Relevant coursework: Data Mining, Data Warehousing, Databases, Artificial Intelligence, Expert Systems, Enterprise Resource Planning, Software Quality Testing, Web Programming, IT Project Management.</p>
+        <p>• Earned an A in Data Mining, with a final project praised by the lecturer and awarded a final-exam exemption.</p>
+        <p>• Organizations: Deputy Minister of Research and Technology, BEM Faculty of Engineering; Secretary of the Education Division, HMIF</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="experience">
   <div class="wrap">
-    <h2>Education &amp; Experience</h2>
+    <h2>Experience &amp; Organization</h2>
     <div class="timeline">
       <div class="timeline-item">
         <div class="timeline-head">
@@ -398,17 +428,6 @@
 
       <div class="timeline-item">
         <div class="timeline-head">
-          <h3>Universitas Jenderal Soedirman — Informatics</h3>
-          <span class="timeline-period">2021 – 2025</span>
-        </div>
-        <div class="timeline-org">Informatics</div>
-        <p>• Relevant coursework: Data Mining, Data Warehousing, Databases, Artificial Intelligence, Expert Systems, Enterprise Resource Planning, Software Quality Testing, Web Programming, IT Project Management.</p>
-        <p>• Earned an A in Data Mining, with a final project praised by the lecturer and awarded a final-exam exemption.</p>
-        <p>• Organizations: Deputy Minister of Research and Technology, BEM Faculty of Engineering; Secretary of the Education Division, HMIF</p>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-head">
           <h3>Quality Assurance Intern</h3>
           <span class="timeline-period">July 2023 – August 2023</span>
         </div>
@@ -419,14 +438,7 @@
         <p>• Managed and updated the agency website's content, publishing more than 20 local news articles on a regular basis.</p>
         <p>• Coordinated with the technical team on structured identification and reporting of system bugs.</p>
       </div>
-    </div>
-  </div>
-</section>
 
-<section id="organisasi">
-  <div class="wrap">
-    <h2>Organization &amp; Volunteer Work</h2>
-    <div class="timeline">
       <div class="timeline-item org">
         <div class="timeline-head">
           <h3>Deputy Minister of Research and Technology</h3>
@@ -437,28 +449,6 @@
         <p>• Monitored and evaluated the execution of work agendas, providing direction to activity leads.</p>
         <p>• Prepared periodic evaluation reports and documented the division's activity outcomes.</p>
       </div>
-
-      <div class="timeline-item org">
-        <div class="timeline-head">
-          <h3>Lead Organizer, Engineering for Society</h3>
-          <span class="timeline-period">November 2023</span>
-        </div>
-        <div class="timeline-org">Student Executive Board (BEM FT), Faculty of Engineering</div>
-        <p>• Led the planning and execution of the Engineering for Society program from start to finish.</p>
-        <p>• Coordinated with all stakeholders — schools, speakers, and participants — to ensure a smooth event.</p>
-        <p>• Successfully ran two training classes (Microsoft Word and Canva) with 50+ participants on each of the first two days.</p>
-      </div>
-
-      <div class="timeline-item org">
-        <div class="timeline-head">
-          <h3>Village Government Coordinator</h3>
-          <span class="timeline-period">January – February 2024</span>
-        </div>
-        <div class="timeline-org">Community Service Program (KKN), Capar Village</div>
-        <p>• Assisted village government administration, including document management and structured resident data archiving.</p>
-        <p>• Handled hosting and updates for the village profile website, keeping village information accurate and current.</p>
-        <p>• Uploaded and updated village website articles regularly to support public information transparency.</p>
-      </div>
     </div>
   </div>
 </section>
@@ -467,74 +457,84 @@
   <div class="wrap">
     <div class="eyebrow-row"><span class="star">✦</span><p class="eyebrow">Data Portfolio</p></div>
     <h2>Case studies in data <span class="hl">analysis</span> &amp; visualization</h2>
-    <p class="lead" style="margin-bottom:30px;">Three data analyst projects — from pure SQL to interactive dashboards deployed live.</p>
+    <p class="lead" style="margin-bottom:30px;">Three data analyst projects — from pure SQL to interactive dashboards deployed live. Use the arrows or dots to browse.</p>
 
-    <div class="nj-grid">
+    <div class="carousel">
+      <div class="arrow prev" aria-label="Previous project">←</div>
+      <div class="arrow next" aria-label="Next project">→</div>
 
-      <div class="nj-card">
-        <div class="nj-visual">
-          <!-- replace with a screenshot of the E-Commerce SQL Analysis chart/notebook -->
-          <img src="\images\revenue-dashboard.png" alt="Revenue Loss Dashboard">
-        </div>
-        <div class="nj-body">
-          <h3>Revenue Loss Analysis</h3>
-          <p class="desc">Cleaned and analyzed 10,586 rows across 5 relational tables in Google Sheets, then built an interactive Looker Studio dashboard to track revenue loss, cancellations, returns, and trends by category, brand, and region.</p>
-          <ul class="nj-insights">
-            <li>Revenue loss reached 15.34% (Rp235.01M of Rp1.53B potential revenue), driven mainly by cancellations (10.9%) rather than returns (5%)</li>
-            <li>Jacket was the top loss-driving category, while Cendana Co had the highest cancellation/return rate, highlighting areas for further quality and supplier investigation</li>
-          </ul>
-          <div class="nj-tags">
-            <span class="nj-tag">Google Sheets</span><span class="nj-tag">Looker Studio</span><span class="nj-tag">Excel</span><span class="nj-tag">Streamlit</span>
+      <div class="carousel-track">
+        <div class="slide active">
+          <div class="slide-visual">
+            <img src="images/revenue-dashboard.png" alt="Revenue Loss Dashboard">
           </div>
-          <div class="nj-links">
-            <a class="nj-bubble" href="https://github.com/ririfka08/ecommerce-sql-analysis" target="_blank" rel="noopener">→ GitHub Repo</a>
+          <div class="slide-body">
+            <h3>Revenue Loss Analysis</h3>
+            <p class="desc">Cleaned and analyzed 10,586 rows across 5 relational tables in Google Sheets, then built an interactive Looker Studio dashboard to track revenue loss, cancellations, returns, and trends by category, brand, and region.</p>
+            <ul class="slide-insights">
+              <li>Revenue loss reached 15.34% (Rp235.01M of Rp1.53B potential revenue), driven mainly by cancellations (10.9%) rather than returns (5%)</li>
+              <li>Jacket was the top loss-driving category, while Cendana Co had the highest cancellation/return rate, highlighting areas for further quality and supplier investigation</li>
+            </ul>
+            <div class="slide-tags">
+              <span class="slide-tag">Google Sheets</span><span class="slide-tag">Looker Studio</span><span class="slide-tag">Excel</span><span class="slide-tag">Streamlit</span>
+            </div>
+            <div class="slide-links">
+              <a class="slide-bubble" href="https://github.com/ririfka08/ecommerce-sql-analysis" target="_blank" rel="noopener">→ GitHub Repo</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide">
+          <div class="slide-visual">
+            <img src="images/books-dashboard.png" alt="Books Publishing Strategy dashboard screenshot">
+          </div>
+          <div class="slide-body">
+            <h3>Books Publishing Strategy Analysis</h3>
+            <p class="desc">Analysis of 52,000+ books from Goodreads to recommend genre and catalog strategy for publishers — popular genres, the effect of page length, rating trends, and underserved language opportunities.</p>
+            <ul class="slide-insights">
+              <li>Niche genres (Comic Strips, Church, Manga) actually outrate mainstream genres like general Fiction</li>
+              <li>Identified 4 underserved language markets: Greek Modern, Filipino, Japanese, Bulgarian</li>
+            </ul>
+            <div class="slide-tags">
+              <span class="slide-tag">Python</span><span class="slide-tag">Pandas</span><span class="slide-tag">Plotly</span><span class="slide-tag">Streamlit</span>
+            </div>
+            <div class="slide-links">
+              <a class="slide-bubble" href="https://books-analysis-dashboard-rifka.streamlit.app/" target="_blank" rel="noopener">→ Live Dashboard</a>
+              <a class="slide-bubble alt" href="https://github.com/ririfka08/books-analysis-dashboard" target="_blank" rel="noopener">→ GitHub Repo</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide">
+          <div class="slide-visual">
+            <img src="images/netflix-dashboard.png" alt="Netflix Content Strategy dashboard screenshot">
+          </div>
+          <div class="slide-body">
+            <h3>Netflix Content Strategy Analysis</h3>
+            <p class="desc">Multi-table analysis (joining titles &amp; credits datasets) for streaming platform content strategy — underserved genres, Movie vs TV Show comparison, production-country efficiency, and cast-level analysis.</p>
+            <ul class="slide-insights">
+              <li>TV Shows outperform Movies — average IMDb rating of 6.98 vs 6.25</li>
+              <li>South Korea is the most efficient production country — highest average rating (7.23)</li>
+            </ul>
+            <div class="slide-tags">
+              <span class="slide-tag">Python</span><span class="slide-tag">Table Joins</span><span class="slide-tag">Plotly</span><span class="slide-tag">Streamlit</span>
+            </div>
+            <div class="slide-links">
+              <a class="slide-bubble" href="https://netflix-analysis-dashboard-rifka.streamlit.app/" target="_blank" rel="noopener">→ Live Dashboard</a>
+              <a class="slide-bubble alt" href="https://github.com/ririfka08/netflix-analysis-dashboard" target="_blank" rel="noopener">→ GitHub Repo</a>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="nj-card">
-        <div class="nj-visual">
-          <img src="images/books-dashboard.png" alt="Books Publishing Strategy dashboard screenshot" >
-        </div>
-        <div class="nj-body">
-          <h3>Books Publishing Strategy Analysis</h3>
-          <p class="desc">Analysis of 52,000+ books from Goodreads to recommend genre and catalog strategy for publishers — popular genres, the effect of page length, rating trends, and underserved language opportunities.</p>
-          <ul class="nj-insights">
-            <li>Niche genres (Comic Strips, Church, Manga) actually outrate mainstream genres like general Fiction</li>
-            <li>Identified 4 underserved language markets: Greek Modern, Filipino, Japanese, Bulgarian</li>
-          </ul>
-          <div class="nj-tags">
-            <span class="nj-tag">Python</span><span class="nj-tag">Pandas</span><span class="nj-tag">Plotly</span><span class="nj-tag">Streamlit</span>
-          </div>
-          <div class="nj-links">
-            <a class="nj-bubble" href="https://books-analysis-dashboard-rifka.streamlit.app/" target="_blank" rel="noopener">→ Live Dashboard</a>
-            <a class="nj-bubble alt" href="https://github.com/ririfka08/books-analysis-dashboard" target="_blank" rel="noopener">→ GitHub Repo</a>
-          </div>
+      <div class="indicator">
+        <span class="counter">1 / 3</span>
+        <div class="dots">
+          <button class="dot active" aria-label="Go to project 1"></button>
+          <button class="dot" aria-label="Go to project 2"></button>
+          <button class="dot" aria-label="Go to project 3"></button>
         </div>
       </div>
-
-      <div class="nj-card">
-        <div class="nj-visual">
-          <!-- TODO: replace with a screenshot of the Netflix Content Strategy Streamlit dashboard -->
-          <img src="images/netflix-dashboard.png" alt="Netflix Content Strategy dashboard screenshot"> 
-        </div>
-        <div class="nj-body">
-          <h3>Netflix Content Strategy Analysis</h3>
-          <p class="desc">Multi-table analysis (joining titles &amp; credits datasets) for streaming platform content strategy — underserved genres, Movie vs TV Show comparison, production-country efficiency, and cast-level analysis.</p>
-          <ul class="nj-insights">
-            <li>TV Shows outperform Movies — average IMDb rating of 6.98 vs 6.25</li>
-            <li>South Korea is the most efficient production country — highest average rating (7.23)</li>
-          </ul>
-          <div class="nj-tags">
-            <span class="nj-tag">Python</span><span class="nj-tag">Table Joins</span><span class="nj-tag">Plotly</span><span class="nj-tag">Streamlit</span>
-          </div>
-          <div class="nj-links">
-            <a class="nj-bubble" href="https://netflix-analysis-dashboard-rifka.streamlit.app/" target="_blank" rel="noopener">→ Live Dashboard</a>
-            <a class="nj-bubble alt" href="https://github.com/ririfka08/netflix-analysis-dashboard" target="_blank" rel="noopener">→ GitHub Repo</a>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
@@ -543,59 +543,71 @@
   <div class="wrap">
     <div class="eyebrow-row"><span class="star">✦</span><p class="eyebrow">Quality Assurance Portfolio</p></div>
     <h2>Manual &amp; automation <span class="hl">testing</span> case studies</h2>
-    <p class="lead" style="margin-bottom:30px;">Alongside data analysis, I'm also open to QA Analyst roles — here are my manual &amp; automation testing case studies.</p>
+    <p class="lead" style="margin-bottom:30px;">Alongside data analysis, I'm also open to QA Analyst roles — here are my manual &amp; automation testing case studies. Use the arrows or dots to browse.</p>
 
-    <div class="nj-grid">
+    <div class="carousel">
+      <div class="arrow prev" aria-label="Previous project">←</div>
+      <div class="arrow next" aria-label="Next project">→</div>
 
-      <div class="nj-card">
-        <div class="nj-visual">
-          <img src="/images/tmdb-testing.png" alt="Manual Testing">
-        </div>
-        <div class="nj-body">
-          <h3>TMDb — Mark as Favorite Feature Testing</h3>
-          <p class="desc">Manual testing of the "Mark as Favorite" feature on the TMDb website, covering user story, requirement, and test scenario design to verify users can mark, access, sort, and remove favorite movies correctly. Followed by regression testing after a site language change (Indonesian → English) to confirm the feature still worked as expected.</p>
-          <div class="nj-tags">
-            <span class="nj-tag">Manual Testing</span><span class="nj-tag">Test Scenario</span><span class="nj-tag">Regression Testing</span><span class="nj-tag">Defect Report</span>
+      <div class="carousel-track">
+        <div class="slide active">
+          <div class="slide-visual">
+            <img src="images/tmdb-testing.png" alt="Manual Testing">
           </div>
-          <div class="nj-links">
-            <a class="nj-bubble" href="https://github.com/ririfka08/technical-test-rifka" target="_blank" rel="noopener">→ GitHub Repo</a>
+          <div class="slide-body">
+            <h3>TMDb — Mark as Favorite Feature Testing</h3>
+            <p class="desc">Manual testing of the "Mark as Favorite" feature on the TMDb website, covering user story, requirement, and test scenario design to verify users can mark, access, sort, and remove favorite movies correctly. Followed by regression testing after a site language change (Indonesian → English) to confirm the feature still worked as expected.</p>
+            <div class="slide-tags">
+              <span class="slide-tag">Manual Testing</span><span class="slide-tag">Test Scenario</span><span class="slide-tag">Regression Testing</span><span class="slide-tag">Defect Report</span>
+            </div>
+            <div class="slide-links">
+              <a class="slide-bubble" href="https://github.com/ririfka08/technical-test-rifka" target="_blank" rel="noopener">→ GitHub Repo</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide">
+          <div class="slide-visual">
+            <img src="images/linggarjati-testing.png" alt="Linggarjati Testing">
+          </div>
+          <div class="slide-body">
+            <h3>Manual &amp; Automation Testing of the Linggarjati Web App using Katalon Studio</h3>
+            <p class="desc">This project covered manual testing (Black Box method) and test automation using Katalon Studio for the Linggarjati web application. 45 test cases were developed to validate the app's core functional aspects, most of which were then automated to ensure reliable functionality and efficient repeat testing.</p>
+            <div class="slide-tags">
+              <span class="slide-tag">Manual Testing</span><span class="slide-tag">Automation Testing</span><span class="slide-tag">Katalon Studio</span><span class="slide-tag">Test Case Design</span><span class="slide-tag">Bug Reporting</span>
+            </div>
+            <div class="slide-links">
+              <a class="slide-bubble" href="https://github.com/ririfka08/manual-testing-linggarjati" target="_blank" rel="noopener">→ Manual Testing Repo</a>
+              <a class="slide-bubble alt" href="https://github.com/ririfka08/automation-testing-linggarjati" target="_blank" rel="noopener">→ Automation Testing Repo</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide">
+          <div class="slide-visual">
+            <img src="images/uat-testing.png" alt="UAT Testing">
+          </div>
+          <div class="slide-body">
+            <h3>Manual Testing of the Tokopedia Web App using UAT</h3>
+            <p class="desc">This project focused on manual testing of the Tokopedia application using the User Acceptance Testing (UAT) method — a comprehensive test flow from questionnaire distribution through to app performance analysis.</p>
+            <div class="slide-tags">
+              <span class="slide-tag">Manual Testing</span><span class="slide-tag">UAT</span><span class="slide-tag">Bug Reporting</span>
+            </div>
+            <div class="slide-links">
+              <a class="slide-bubble" href="https://github.com/ririfka08/uat-test-tokped" target="_blank" rel="noopener">→ GitHub Repo</a>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="nj-card">
-        <div class="nj-visual">
-          <img src="/images/linggarjati-testing.png" alt="Linggarjati Testing">
-          </div>
-        <div class="nj-body">
-          <h3>Manual &amp; Automation Testing of the Linggarjati Web App using Katalon Studio</h3>
-          <p class="desc">This project covered manual testing (Black Box method) and test automation using Katalon Studio for the Linggarjati web application. 45 test cases were developed to validate the app's core functional aspects, most of which were then automated to ensure reliable functionality and efficient repeat testing.</p>
-          <div class="nj-tags">
-            <span class="nj-tag">Manual Testing</span><span class="nj-tag">Automation Testing</span><span class="nj-tag">Katalon Studio</span><span class="nj-tag">Test Case Design</span><span class="nj-tag">Bug Reporting</span>
-          </div>
-          <div class="nj-links">
-            <a class="nj-bubble" href="https://github.com/ririfka08/manual-testing-linggarjati" target="_blank" rel="noopener">→ Manual Testing Repo</a>
-            <a class="nj-bubble alt" href="https://github.com/ririfka08/automation-testing-linggarjati" target="_blank" rel="noopener">→ Automation Testing Repo</a>
-          </div>
+      <div class="indicator">
+        <span class="counter">1 / 3</span>
+        <div class="dots">
+          <button class="dot active" aria-label="Go to project 1"></button>
+          <button class="dot" aria-label="Go to project 2"></button>
+          <button class="dot" aria-label="Go to project 3"></button>
         </div>
       </div>
-
-      <div class="nj-card">
-        <div class="nj-visual">
-          <img src="/images/uat-testing.png" alt="UAT Testing">
-        </div>
-        <div class="nj-body">
-          <h3>Manual Testing of the Tokopedia Web App using UAT</h3>
-          <p class="desc">This project focused on manual testing of the Tokopedia application using the User Acceptance Testing (UAT) method — a comprehensive test flow from questionnaire distribution through to app performance analysis.</p>
-          <div class="nj-tags">
-            <span class="nj-tag">Manual Testing</span><span class="nj-tag">UAT</span><span class="nj-tag">Bug Reporting</span>
-          </div>
-          <div class="nj-links">
-            <a class="nj-bubble" href="https://github.com/ririfka08/uat-test-tokped" target="_blank" rel="noopener">→ GitHub Repo</a>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
@@ -604,61 +616,73 @@
   <div class="wrap">
     <div class="eyebrow-row"><span class="star">✦</span><p class="eyebrow">System Analyst Portfolio</p></div>
     <h2>System <span class="hl">analysis</span> &amp; design case studies</h2>
-    <p class="lead" style="margin-bottom:30px;">I'm also open to System Analyst roles — here are my system analysis and design case studies.</p>
+    <p class="lead" style="margin-bottom:30px;">I'm also open to System Analyst roles — here are my system analysis and design case studies. Use the arrows or dots to browse.</p>
 
-    <div class="nj-grid">
+    <div class="carousel">
+      <div class="arrow prev" aria-label="Previous project">←</div>
+      <div class="arrow next" aria-label="Next project">→</div>
 
-      <div class="nj-card">
-        <div class="nj-visual">
-          <!-- TODO: add a screenshot of a diagram (Use Case / Activity / Sequence) from this project -->
-          <div class="ph">[ loading... ]</div>
-        </div>
-        <div class="nj-body">
-          <h3>Waterfall Method Implementation for a Web-based Automated Essay Scoring App using LSTM</h3>
-          <p class="desc">Conducted system requirements analysis, application process design, and requirement documentation for the application.</p>
-          <div class="nj-tags">
-            <span class="nj-tag">Flowchart</span><span class="nj-tag">ERD</span><span class="nj-tag">Use Case Diagram</span><span class="nj-tag">Activity Diagram</span><span class="nj-tag">Sequence Diagram</span>
+      <div class="carousel-track">
+        <div class="slide active">
+          <div class="slide-visual">
+            <!-- TODO: add a screenshot of a diagram (Use Case / Activity / Sequence) from this project -->
+            <div class="ph">[ diagram screenshot<br>Automated Essay Scoring ]</div>
           </div>
-          <div class="nj-links">
-            <a class="nj-bubble" href="https://drive.google.com/file/d/1F2MbSCUv5y4k4u3VB1V6mNuC46mMIZhK/view?usp=drive_link" target="_blank" rel="noopener">→ Document Link</a>
+          <div class="slide-body">
+            <h3>Waterfall Method Implementation for a Web-based Automated Essay Scoring App using LSTM</h3>
+            <p class="desc">Conducted system requirements analysis, application process design, and requirement documentation for the application.</p>
+            <div class="slide-tags">
+              <span class="slide-tag">Flowchart</span><span class="slide-tag">ERD</span><span class="slide-tag">Use Case Diagram</span><span class="slide-tag">Activity Diagram</span><span class="slide-tag">Sequence Diagram</span>
+            </div>
+            <div class="slide-links">
+              <a class="slide-bubble" href="https://drive.google.com/file/d/1F2MbSCUv5y4k4u3VB1V6mNuC46mMIZhK/view?usp=drive_link" target="_blank" rel="noopener">→ Document Link</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide">
+          <div class="slide-visual">
+            <!-- TODO: add a screenshot of a diagram/mockup from this project -->
+            <div class="ph">[ diagram screenshot<br>Academic Information System ]</div>
+          </div>
+          <div class="slide-body">
+            <h3>Design &amp; Development of a Web-based University Academic Information System using the Prototyping Method</h3>
+            <p class="desc">Designed and developed a web-based University Academic Information System using the Prototyping method so development stayed aligned with user needs. The system covers integrated academic data management for students, lecturers, courses, schedules, and grades.</p>
+            <div class="slide-tags">
+              <span class="slide-tag">Flowchart</span><span class="slide-tag">ERD</span><span class="slide-tag">Use Case Diagram</span><span class="slide-tag">Activity Diagram</span><span class="slide-tag">Sequence Diagram</span>
+            </div>
+            <div class="slide-links">
+              <a class="slide-bubble" href="https://drive.google.com/file/d/1F2MbSCUv5y4k4u3VB1V6mNuC46mMIZhK/view?usp=drive_link" target="_blank" rel="noopener">→ Document Link</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide">
+          <div class="slide-visual">
+            <!-- TODO: add a screenshot of a diagram from the SRS document -->
+            <div class="ph">[ diagram screenshot<br>Camera Rental System (RECAM) ]</div>
+          </div>
+          <div class="slide-body">
+            <h3>Software Requirements Specification for a Camera Rental System (RECAM)</h3>
+            <p class="desc">Wrote a Software Requirements Specification (SRS) document for the Camera Rental System (RECAM) as a reference for system development. The document covers functional and non-functional requirements analysis, plus system modeling using Context Diagrams, Data Flow Diagrams (DFD), Entity Relationship Diagrams (ERD), and Use Case Diagrams.</p>
+            <div class="slide-tags">
+              <span class="slide-tag">Flowchart</span><span class="slide-tag">DFD</span><span class="slide-tag">ERD</span><span class="slide-tag">Use Case Diagram</span><span class="slide-tag">Activity Diagram</span><span class="slide-tag">SRS Documentation</span>
+            </div>
+            <div class="slide-links">
+              <a class="slide-bubble" href="https://drive.google.com/file/d/1F2MbSCUv5y4k4u3VB1V6mNuC46mMIZhK/view?usp=drive_link" target="_blank" rel="noopener">→ Document Link</a>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="nj-card">
-        <div class="nj-visual">
-          <!-- TODO: add a screenshot of a diagram/mockup from this project -->
-          <div class="ph">[ loading... ]</div>
-        </div>
-        <div class="nj-body">
-          <h3>Design &amp; Development of a Web-based University Academic Information System using the Prototyping Method</h3>
-          <p class="desc">Designed and developed a web-based University Academic Information System using the Prototyping method so development stayed aligned with user needs. The system covers integrated academic data management for students, lecturers, courses, schedules, and grades.</p>
-          <div class="nj-tags">
-            <span class="nj-tag">Flowchart</span><span class="nj-tag">ERD</span><span class="nj-tag">Use Case Diagram</span><span class="nj-tag">Activity Diagram</span><span class="nj-tag">Sequence Diagram</span>
-          </div>
-          <div class="nj-links">
-            <a class="nj-bubble" href="https://drive.google.com/file/d/1F2MbSCUv5y4k4u3VB1V6mNuC46mMIZhK/view?usp=drive_link" target="_blank" rel="noopener">→ Document Link</a>
-          </div>
+      <div class="indicator">
+        <span class="counter">1 / 3</span>
+        <div class="dots">
+          <button class="dot active" aria-label="Go to project 1"></button>
+          <button class="dot" aria-label="Go to project 2"></button>
+          <button class="dot" aria-label="Go to project 3"></button>
         </div>
       </div>
-
-      <div class="nj-card">
-        <div class="nj-visual">
-          <!-- TODO: add a screenshot of a diagram from the SRS document -->
-          <div class="ph">[ loading... ]</div>
-        </div>
-        <div class="nj-body">
-          <h3>Software Requirements Specification for a Camera Rental System (RECAM)</h3>
-          <p class="desc">Wrote a Software Requirements Specification (SRS) document for the Camera Rental System (RECAM) as a reference for system development. The document covers functional and non-functional requirements analysis, plus system modeling using Context Diagrams, Data Flow Diagrams (DFD), Entity Relationship Diagrams (ERD), and Use Case Diagrams.</p>
-          <div class="nj-tags">
-            <span class="nj-tag">Flowchart</span><span class="nj-tag">DFD</span><span class="nj-tag">ERD</span><span class="nj-tag">Use Case Diagram</span><span class="nj-tag">Activity Diagram</span><span class="nj-tag">SRS Documentation</span>
-          </div>
-          <div class="nj-links">
-            <a class="nj-bubble" href="https://drive.google.com/file/d/1F2MbSCUv5y4k4u3VB1V6mNuC46mMIZhK/view?usp=drive_link" target="_blank" rel="noopener">→ Document Link</a>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
@@ -697,7 +721,7 @@
 
 <section id="certifications">
   <div class="wrap">
-    
+
     <h2>Certifications</h2>
     <div class="cert-grid">
       <a class="cert-card" href="https://drive.google.com/file/d/1pJVm49-L-oe1SwtNhkLdiJgk30Z5U5Xu/view?usp=drive_link" target="_blank" rel="noopener">
@@ -750,6 +774,30 @@
   </div>
 </footer>
 
+
+<script>
+  document.querySelectorAll('.carousel').forEach(function(carousel){
+    var slides = carousel.querySelectorAll('.slide');
+    var dots = carousel.querySelectorAll('.dot');
+    var counter = carousel.querySelector('.counter');
+    var prevBtn = carousel.querySelector('.arrow.prev');
+    var nextBtn = carousel.querySelector('.arrow.next');
+    var idx = 0;
+
+    function render(){
+      slides.forEach(function(s,i){ s.classList.toggle('active', i === idx); });
+      dots.forEach(function(d,i){ d.classList.toggle('active', i === idx); });
+      if (counter) counter.textContent = (idx + 1) + ' / ' + slides.length;
+    }
+    function go(dir){ idx = (idx + dir + slides.length) % slides.length; render(); }
+
+    if (prevBtn) prevBtn.addEventListener('click', function(){ go(-1); });
+    if (nextBtn) nextBtn.addEventListener('click', function(){ go(1); });
+    dots.forEach(function(d,i){ d.addEventListener('click', function(){ idx = i; render(); }); });
+
+    render();
+  });
+</script>
 
 </body>
 </html>
