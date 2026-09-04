@@ -131,36 +131,6 @@
   .schema .k{ color: var(--muted); }
   .schema .v{ color: var(--nj-ink); font-weight: 700; }
 
-  .project{
-    background: var(--surface); border:3px solid var(--text); border-radius: var(--radius);
-    padding: 22px; margin-bottom: 18px;
-    box-shadow: 5px 5px 0px 0px var(--accent);
-  }
-  .project-head{ display:flex; align-items:baseline; justify-content:space-between; gap: 12px; flex-wrap:wrap; }
-  .project-id{ font-family:'Quicksand'; font-size: 11px; color: var(--muted); }
-  .project h3{ margin: 4px 0 8px; font-size: 17px; font-family:'Quicksand'; font-weight:700; }
-  .project p{ color: var(--text); margin: 0 0 14px; font-size: 14.5px; }
-  .tags{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom: 14px; }
-  .tag{
-    font-family:'Quicksand'; font-size: 11px; font-weight:700; padding: 4px 10px; border-radius: 999px;
-    background: var(--surface-2); color: var(--accent-dim); border: 2px solid var(--line);
-  }
-  .project-links{ display:flex; gap: 16px; font-size: 13px; font-family:'Quicksand'; font-weight:700; }
-  .project-links a::before{ content: ""; color: var(--accent); }
-
-  .insights{
-    list-style: none; margin: 0 0 14px; padding: 0;
-    border-top: 1px dashed var(--line); padding-top: 12px;
-  }
-  .insights li{
-    position: relative; padding-left: 18px; margin-bottom: 6px;
-    font-size: 13.5px; color: var(--text);
-  }
-  .insights li::before{
-    content: "▸"; position: absolute; left: 0; color: var(--accent-dim); font-weight: 700;
-  }
-  .insights li:last-child{ margin-bottom: 0; }
-
   .checker{
     height: 16px;
     background-image:
@@ -170,7 +140,7 @@
     background-position: 0 0, 8px 8px;
     background-color: var(--nj-green);
   }
-  #projects{ border-top: none; padding: 0 0 8px; position: relative; overflow: hidden; }
+  #projects{ border-top: 3px dashed var(--line); padding: 0 0 8px; position: relative; overflow: hidden; }
   #projects .wrap{ padding-top: 52px; }
   #projects::before{
     content:""; position:absolute; top:-30px; right:-50px; width:280px; height:280px;
@@ -292,24 +262,20 @@
   .skill-card .cat{ font-family:'Quicksand'; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color: var(--accent-dim); font-size: 11px; margin-bottom: 8px; }
   .skill-card .items{ color: var(--text); font-size: 14px; font-weight: 600; }
 
+  /* ---------- TIMELINE (Education / Experience & Organization) — thin border-left accent by category ---------- */
   .timeline{ display:flex; flex-direction:column; gap: 18px; }
   .timeline-item{
     background: var(--surface); border:1.5px solid var(--line); border-radius: var(--radius);
-    padding: 18px 20px; position: relative; padding-left: 26px;
-    border-left: 3px solid var(--amber);
+    padding: 18px 20px; border-left: 3px solid var(--line);
   }
-  .timeline-item::before{
-    content:""; position:absolute; left: 12px; top: 24px;
-    width: 8px; height: 8px; border-radius: 2px; background: var(--amber);
-  }
+  .timeline-item.edu{ border-left-color: var(--amber); }
+  .timeline-item.job{ border-left-color: var(--sky); }
+  .timeline-item.org{ border-left-color: var(--leaf); }
   .timeline-head{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; align-items:baseline; }
   .timeline-head h3{ margin:0; font-size: 15.5px; font-family:'Quicksand'; font-weight:700; color: var(--text); }
   .timeline-period{ font-family:'Quicksand'; font-size: 11.5px; color: var(--muted); }
   .timeline-org{ color: var(--text); font-size: 13px; font-family:'Quicksand'; font-weight:700; margin: 4px 0 8px; }
   .timeline-item p{ color: var(--text); font-size: 14px; margin: 0; }
-
-  .timeline-item.org{ border-left-color: var(--leaf); }
-  .timeline-item.org::before{ background: var(--leaf); }
 
   .cert-grid{ display:grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
   @media (max-width: 620px){ .cert-grid{ grid-template-columns: 1fr; } }
@@ -318,17 +284,12 @@
     padding: 16px 18px; display:flex; align-items:center; gap: 12px;
     border-left: 3px solid var(--rose);
   }
-  .cert-card .cert-icon{ font-size: 20px; }
   .cert-card .cert-name{ font-size: 14px; color: var(--text); font-weight: 700; }
   .cert-card .cert-issuer{ font-size: 12px; color: var(--muted); font-family:'Quicksand'; }
 
   footer{ padding: 44px 0 56px; }
   .footer-links{ display:flex; gap: 20px; flex-wrap: wrap; font-family:'Unbounded'; font-weight:700; font-size: 12px; }
   .footer-note{ color: var(--muted); font-size: 12.5px; margin-top: 20px; }
-
-  @media (prefers-reduced-motion: reduce){
-    .cursor{ animation: none; }
-  }
 </style>
 </head>
 <body>
@@ -400,7 +361,7 @@
   <div class="wrap">
     <h2>Education</h2>
     <div class="timeline">
-      <div class="timeline-item">
+      <div class="timeline-item edu">
         <div class="timeline-head">
           <h3>Universitas Jenderal Soedirman — Informatics</h3>
           <span class="timeline-period">2021 – 2025</span>
@@ -418,7 +379,7 @@
   <div class="wrap">
     <h2>Experience &amp; Organization</h2>
     <div class="timeline">
-      <div class="timeline-item">
+      <div class="timeline-item job">
         <div class="timeline-head">
           <h3>Business Analyst Intern</h3>
           <span class="timeline-period">Aug 2026 – Present</span>
@@ -430,7 +391,7 @@
         <p>• Awarded a Rakamin Project Based Internship (PBI) scholarship to participate in this program.</p>
       </div>
 
-      <div class="timeline-item">
+      <div class="timeline-item job">
         <div class="timeline-head">
           <h3>Quality Assurance Intern</h3>
           <span class="timeline-period">July 2023 – August 2023</span>
@@ -632,7 +593,7 @@
       <div class="carousel-track">
         <div class="slide active">
           <div class="slide-visual">
-            <img src="/images/aes-system.png" alt="AES System Analysis">
+            <img src="images/aes-system.png" alt="AES System Analysis">
           </div>
           <div class="slide-body">
             <h3>Waterfall Method Implementation for a Web-based Automated Essay Scoring App using LSTM</h3>
@@ -648,7 +609,7 @@
 
         <div class="slide">
           <div class="slide-visual">
-          <img src="/images/sisfo-system.png" alt="Sistem Informasi Akademik">
+            <img src="images/sisfo-system.png" alt="Sistem Informasi Akademik">
           </div>
           <div class="slide-body">
             <h3>Design &amp; Development of a Web-based University Academic Information System using the Prototyping Method</h3>
@@ -664,7 +625,7 @@
 
         <div class="slide">
           <div class="slide-visual">
-          <img src="/images/recam-system.png" alt="RECAM System Analysis">
+            <img src="images/recam-system.png" alt="RECAM System Analysis">
           </div>
           <div class="slide-body">
             <h3>Software Requirements Specification for a Camera Rental System (RECAM)</h3>
